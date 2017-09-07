@@ -1,15 +1,16 @@
 html{
-	 background-size: cover
+	 background-size: cover;
 }
 
 body{
-	/*background-color: black;*/
+	/*Color grey for debug*/
+	/*background-color: black; */
 	background-color: #D3D3D3;
   font-family: 'Poppins', sans-serif;
 	color:white;
 }
 
-.background{
+video.background{
 	position: fixed;
 	opacity:0.15;
 	min-height: 100%;
@@ -27,13 +28,15 @@ body{
 	height:350px;
 	/*background-color: black;*/
 	text-align: center;
-	/*display:block;*/
+	display:block;
 	margin:0 auto;
 	position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   /*margin: -50% 0 0 -50%;*/
+
+  /*Display none for debug*/
   display:none;
 }
 
@@ -79,7 +82,9 @@ h3 span:nth-child(2){
 	outline: none;
 }
 
-.head{
+header.head{
+	/*Display none for debug*/
+	/*display: none;*/
 	background-color: rgba(0, 0, 0, 0.8);
 	height: 150px;
 }
@@ -99,6 +104,8 @@ button.random{
 	margin-top: 15px;
 }
 
+
+/*Left sidebar*/
 .ingredients-list{
 	position:absolute;
 	top:160px;
@@ -108,13 +115,60 @@ button.random{
 }
 
 .ingredients-sidebox{
+	font-family: 'Permanent Marker', cursive;
+	color:#0EE241;
+	font-size: 20pt;
 	background-color: rgba(0, 0, 0, 0.3);
 	width:100%;
 	height:450px;
 	margin-top: 7px;
+	overflow:auto;
 }
 
+.side-list li{
+	padding:10px 0 10px 50px;
+	position: relative;
+}
+
+.side-list li .delete{
+	position: absolute;
+	top:28px;
+	left:16px;
+
+}
+
+.side-list li .one{
+	width:10px;
+	height:5px;
+	transform: rotate(45deg);
+	opacity: 0.7;
+	background-color: white;
+}
+
+.side-list li .two{
+	width:25px;
+	height:5px;
+	transform: rotate(315deg) translate(8px,-6px);
+	opacity: 0.7;
+	background-color: white;
+}
+
+.side-list li .delete:hover{
+	cursor:pointer;
+	opacity: 0.4;
+	animation: fadeindelete 0.5s;
+}
+
+@keyframes fadeindelete {
+    from { opacity: 1 }
+    to   { opacity: 0.4 }
+}
+
+
 .sidebar{
+	/*Display none for debug*/
+	/*display: none;*/
+
 	position:fixed;
 	top:0;
 	left:0;
@@ -122,3 +176,85 @@ button.random{
 	width:300px;
 	height:100%;
 }
+
+
+/*Ingredients List Generator*/
+.ingredients-box{
+	position:relative;
+	margin:0;
+	padding:0;
+	top: 40px;
+	left: 350px;
+	width:75%;
+	/*Display none for debug*/
+	/*display: none;*/
+}
+
+
+#ingredients-input{
+	margin-top:10px;
+	width:100%;
+}
+
+label.ingredients-type{
+	font-size: 31pt;
+
+}
+
+.ingredients-choices{
+	display: none;
+	background-color: rgba(0,0,0,0.5);
+	margin-top:20px;
+	width:100%;
+	height:375px;
+	overflow: auto;
+}
+
+.ingredients-choices::-webkit-scrollbar, .ingredients-sidebox::-webkit-scrollbar {
+  width: 15px;
+  height: 20px;
+  /* or add it to the track */
+}
+
+.ingredients-choices::-webkit-scrollbar-track, .ingredients-sidebox::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.8);
+	background-color: rgba(255, 255, 255, 0.3);
+	border-radius: 10px;
+}
+
+.ingredients-choices::-webkit-scrollbar-thumb, .ingredients-sidebox::-webkit-scrollbar-thumb {
+ background: #595959; 
+ border-radius: 10px;
+ -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+
+li a{
+	font-family: 'Permanent Marker', cursive;
+	display:block;
+	margin:0 auto;
+	text-align: center;
+	color:#0EE241;
+	cursor: pointer;
+	font-size: 20pt;
+	padding:10px;
+	/*rgba(89,89,89,0.8)*/
+}
+
+li a:hover{
+	color:white;
+	text-decoration:none;
+	background-color: #5433F7;
+	animation: fadeinBackground 0.4s, fadeinText 0.4s;
+}
+
+@keyframes fadeinBackground {
+    from { background-color: rgba(0,0,0,0) }
+    to   { background-color: #5433F7 }
+}
+
+@keyframes fadeinText {
+    from { color: #0EE241 }
+    to   { color: white }
+}
+

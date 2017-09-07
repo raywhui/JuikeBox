@@ -6,6 +6,7 @@
 	
 	<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
 
+
 	<link rel="stylesheet" type="text/css" href="./assets/css/reset.css">
 	
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -38,7 +39,7 @@
 		<button class="drink-button drink button">Have a Drink</button>
 	</div>
 
-	
+<!-- Ingredients UI -->
 	<header class="container-fluid head">
 		<div class="row">
 			<div class="col-lg-offset-10 col-lg-2">
@@ -53,9 +54,25 @@
 	<aside class="sidebar">
 		<div class="ingredients-list">
 			<div class="ingredients-title">Ingredients:</div>
-			<div class="ingredients-sidebox"></div>
+			<div class="ingredients-sidebox">
+				<ul class='side-list'></ul>
+			</div>
 		</div>
 	</aside>
+
+	<div class='container-fluid ingredients-box'>
+		<div class="row">
+			<div class="col-lg-9">
+
+				<label class="ingredients-type">Type in your ingredients:</label>
+				<input type="text" class="form-control" id="ingredients-input">
+				<div class='ingredients-choices'>
+					<ul class='choices'></ul>
+				</div>
+
+			</div>
+		</div>
+	</div>
 
 
 <!--Drinks-->
@@ -95,13 +112,96 @@
 
 <!--SoundCloud Functions + Logic-->
 	<script type="text/javascript">
-		$(".landing-music").prop('volume',0.1);
-		$(".drink-button").on('click', function(){
 
-			$('.landing-text').fadeOut(800,'linear');
-
-		});
 	</script>
+
+<!--DOM Manipulation + Logic -->
+<script src="./assets/javascript/drinkingText.js"></script>
+<script type="text/javascript">
+
+//Landing music vol
+	$(".landing-music").prop('volume',0.1);
+
+//Landing drink button transition to ingredients	
+	$(".drink-button").on('click', function(){
+
+		$('.landing-text').fadeOut(850,'linear');
+
+	});
+
+//Array to list function
+function choicesList(){
+	//Takes input val
+	var typedIngredient = $('input').val();
+
+	//Used to empty page each keypress
+	$('.choices').empty();
+
+	//For loop to check through ingredients array
+	for (var i = 0; i < ingredients.length; i++) {
+
+		var converter = ingredients[i].toUpperCase();
+
+		//Removes case sensitivity for easy comparison
+		if (converter.indexOf(typedIngredient.toUpperCase()) != -1 && typedIngredient !== "" && typedIngredient !== " "){
+				$('.ingredients-choices').css('display','block');
+
+				$('.choices').append(
+					  '<li><a>' + ingredients[i] + '</a></li>'
+					);
+				console.log(ingredients[i]);
+		} //if
+		else if (typedIngredient === ""){
+			$('.ingredients-choices').css('display','none');
+
+		}//else if
+	}//for loop
+}//choicesList
+
+
+//Ingredients input
+	$('input').on('keyup', function(){
+		//Adds array to DOM
+		choicesList();
+	}); //input onkeyup
+
+	$('.choices').on('click','a', function(){
+		var textVal = $(this).text();
+		var ogIndex = ingredients.indexOf(textVal);
+		$('.side-list').append(
+			'<li>' + '<div class="delete" data-index="' + ogIndex + '">' + 
+				'<div class="one"></div><div class="two"></div>'+ 
+				'</div>' + textVal + 
+			'</li>'
+		);
+		//removes text from DOM
+		$(this).parent().remove();
+		console.log(ogIndex);
+
+		//removes text from array
+		ingredients.splice(ogIndex, 1);
+
+	});//event delegation li a click
+
+	$('.side-list').on('click','.delete', function(){
+		var textSide = $(this).parent().text();
+		var dataIndex = $(this).attr('data-index');
+		var intConverter = parseInt(dataIndex);
+
+		//readds text into array
+		ingredients.splice(intConverter,0,textSide);
+		console.log(textSide);
+		console.log(intConverter);
+		$(this).parent().remove();
+
+		//repeat function to readd dynamically to DOM
+		choicesList();
+	});
+	//WHATS THE MINIMUM AMT OF INGREDIENTS WE NEED?
+	//Next goal. Make button to put ingredients list into array and transition to instructions page.
+
+</script>
+
 
 
 </body>
