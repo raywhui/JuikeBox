@@ -139,7 +139,37 @@
 	</aside>
 
 
+<!--Cheers UI-->
+	<!--Cheers Middle Box-->
+	<div class='container-fluid cheers-box'>
+		<div class="row">
+			<div class="col-lg-9">
 
+				<label class="main-title">Here's your drink:</label>
+				<div class="main-title">Insert Drink Name</div>
+				<div class="main-title">Insert Image</div>
+				<div class="main-title">That'll be $500.</div>
+
+			</div>
+		</div>
+	</div>
+
+
+	<!--Cheers Sidebar-->
+	<aside class="sidebar purple" id="container">
+		<div class="ingredients-side">
+			<div class="title">Music:</div>
+			<div class="sidebox">
+			</div>
+		</div>
+	</aside>
+
+
+
+
+
+
+<!--Right panel Buttons-->
 	<div class="right-panel">
 		<div class="ingredients-mini right-side">Ingredients</div>
 		<div class="instructions-mini right-side">Instructions</div>
@@ -191,7 +221,7 @@
 <script type="text/javascript">
 
 
-var currentColor = "blue";
+var currentColor = "purple";
 
 
 //Landing music vol
@@ -200,7 +230,10 @@ var currentColor = "blue";
 //Landing drink button transition to ingredients	
 	$(".drink-button").on('click', function(){
 
-		$('.landing-text').fadeOut(850,'linear');
+		$('.landing-text').fadeOut(850,'linear',function(){
+			head //fade in
+			ingredients-box//fade-in
+		});
 		currentColor = "green";
 
 	});
@@ -328,6 +361,16 @@ function choicesList(){
 			});
 		}
 
+		else if (currentColor === "purple"){
+			$('.cheers-box').fadeOut(400, function(){
+				$('.ingredients-box').fadeIn(400);
+			});
+
+			$('.purple').animate({left: '-300px'},400, function(){
+				$('.green').animate({left: '0px',},400);
+			});
+		}
+
 		currentColor = "green";
 		console.log('Color is now: ' + currentColor);
 	});
@@ -345,17 +388,44 @@ function choicesList(){
 			});
 		}
 
+		else if (currentColor === "purple"){
+			$('.cheers-box').fadeOut(400, function(){
+				$('.instructions-box').fadeIn(400);
+			});
+
+			$('.purple').animate({left: '-300px'},400, function(){
+				$('.blue').animate({left: '0px',},400);
+			});
+		}
+
 		currentColor = "blue";
 		console.log('Color is now: ' + currentColor);
 	});
 
-	// $('.results-mini').on('click',function(){
-	// 	currentColor = "purple";
-	// 	//appearing
+	$('.results-mini').on('click',function(){
+		if (currentColor === "green"){
+			$('.ingredients-box').fadeOut(400, function(){
+				$('.cheers-box').fadeIn(400);
+			});
 
+			$('.green').animate({left: '-300px'},400, function(){
+				$('.purple').animate({left: '0px',},400);
+			});
+		}
 
-	// 	//disappearing
-	// });
+		else if (currentColor === "blue"){
+			$('.instructions-box').fadeOut(400, function(){
+				$('.cheers-box').fadeIn(400);
+			});
+
+			$('.blue').animate({left: '-300px'},400, function(){
+				$('.purple').animate({left: '0px',},400);
+			});
+		}
+
+		currentColor = "purple";
+		console.log('Color is now: ' + currentColor);
+	});
 
 
 </script>

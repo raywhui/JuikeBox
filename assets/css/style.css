@@ -92,8 +92,10 @@ header.head{
 }
 
 .top-logo{
+	position: fixed;
+	top:0;
+	left: 350px;
 	font-size:82pt;
-	margin-left: 72px;
 }
 
 .random-centered{
@@ -205,6 +207,17 @@ button.random{
 	z-index: 1;
 }
 
+.shaker:hover{
+	animation: shakeshakeshake 0.5s;
+}
+
+@keyframes shakeshakeshake{
+	25% {transform: rotate(-27deg);}
+	50% {transform: rotate(27deg);}
+	75% {transform: rotate(-27deg);}
+	100% {transform: rotate(0deg);}
+}
+
 .ingredients-confirm:hover{
 	cursor:pointer;
 
@@ -270,20 +283,20 @@ label.main-title{
 	overflow: auto;
 }
 
-.ingredients-choices::-webkit-scrollbar, .ingredients-sidebox::-webkit-scrollbar {
+.ingredients-choices::-webkit-scrollbar, .sidebox::-webkit-scrollbar {
   width: 15px;
   height: 20px;
   /* or add it to the track */
 }
 
-.ingredients-choices::-webkit-scrollbar-track, .ingredients-sidebox::-webkit-scrollbar-track
+.ingredients-choices::-webkit-scrollbar-track, .sidebox::-webkit-scrollbar-track
 {
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.8);
 	background-color: rgba(255, 255, 255, 0.3);
 	border-radius: 10px;
 }
 
-.ingredients-choices::-webkit-scrollbar-thumb, .ingredients-sidebox::-webkit-scrollbar-thumb {
+.ingredients-choices::-webkit-scrollbar-thumb, .sidebox::-webkit-scrollbar-thumb {
  background: #595959; 
  border-radius: 10px;
  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
@@ -327,6 +340,8 @@ li a:hover{
 /*Instructions Page*/
 .blue{
 	background-color: rgba(46, 186, 254, 0.7);
+	left:-300px;
+
 }
 
 .instructions-box{
@@ -337,12 +352,12 @@ li a:hover{
 	left: 350px;
 	width:75%;
 	/*Display none for debug*/
-	/*display: none;*/
+	display: none;
 }
 
 .instructions-list{
 	font-family: 'Permanent Marker', cursive;
-	background-color: rgba(46, 186, 254, 0.7);
+	background-color: rgba(0,0,0,0.5);;
 	padding:0 0 0 45px;
 	margin-top: 10px;
 	font-size: 60pt;
@@ -372,6 +387,35 @@ li a:hover{
 }
 
 
+
+/*Cheers Styling*/
+.cheers-box{
+	position:relative;
+	margin:0;
+	padding:0;
+	top: 40px;
+	left: 350px;
+	width:75%;
+	/*Display none for debug*/
+	display: none;
+}
+
+.purple{
+	background-color: rgba(84,51,247,0.7);
+	left:-300px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 .right-panel{
 	width: 662px;
   font-size: 20pt;
@@ -380,12 +424,9 @@ li a:hover{
   position: fixed;
   top: 443px;
   right: -331px;
-}
-
-.fill-space{
-	float:right;
-	width:150px;
-	height:5px;
+	
+	/*Diplay none for debug*/
+  display:none;
 }
 
 .ingredients-mini{
@@ -418,4 +459,16 @@ li a:hover{
   top: 591px;
   text-align: center;
 	background-color: rgba(84,51,247,0.7);
+}
+
+.ingredients-mini:hover{
+	cursor:pointer;
+}
+
+.instructions-mini:hover{
+	cursor:pointer;
+}
+
+.results-mini:hover{
+	cursor:pointer;
 }
