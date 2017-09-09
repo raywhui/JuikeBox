@@ -1,0 +1,474 @@
+html{
+	 background-size: cover;
+	 overflow-x: hidden;
+	 overflow-y: hidden;
+}
+
+body{
+	/*Color grey for debug*/
+	/*background-color: black; */
+	background-color: #D3D3D3;
+  font-family: 'Poppins', sans-serif;
+	color:white;
+}
+
+video.background{
+	position: fixed;
+	opacity:0.15;
+	min-height: 100%;
+  min-width: 1920px;
+	width: 100%;
+  height:auto;
+  top:0;
+  left:0;
+  z-index:-100;
+  filter:contrast(150%);
+}
+
+.landing-text{
+	width:550px;
+	height:350px;
+	/*background-color: black;*/
+	text-align: center;
+	display:block;
+	margin:0 auto;
+	position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /*margin: -50% 0 0 -50%;*/
+
+  /*Display for debug*/
+  display:none;
+}
+
+h1{
+	font-size:93pt;
+	font-weight: bold;
+}
+
+/*h1 span:nth-child(1){
+	color:#2EBAFE; blue
+}
+
+h1 span:nth-child(2){
+
+}
+
+h1 span:nth-child(3){
+		color:#0EE241; green
+}
+
+h1 span:nth-child(4){
+	color:#5433f7; purple
+}
+*/
+
+h3{
+	font-family: 'Permanent Marker', cursive;
+	font-size:25pt;
+}
+
+h3 span:nth-child(2){
+	color:#5433f7; purple
+}
+
+.button{
+	border-radius: 25px;
+	background-color: #5433f7;
+	border: none;
+	padding: 10px 20px;
+}
+
+.drink:focus{
+	outline: none;
+}
+
+header.head{
+	/*Display none for debug*/
+	/*display: none;*/
+	background-color: rgba(36,36,36,1);
+	height: 150px;
+}
+
+.top-logo{
+	position: fixed;
+	top:0;
+	left: 350px;
+	font-size:82pt;
+}
+
+.random-centered{
+	text-align: center;
+	display:block;
+	margin:0 auto;
+}
+
+.random-title{
+	font-size: 15pt;
+
+}
+
+button.random{
+	margin-top: 15px;
+}
+
+
+/*Left sidebar*/
+.sidebar{
+	position:fixed;
+	top:0;
+	left:0;
+	width:300px;
+	height:100%;
+	overflow:hidden;
+}
+
+.green{
+	background-color: rgba(14, 226, 65, 0.7);
+	/*Display none for debug*/
+	/*display: none;*/
+	left:-300px;
+}
+
+.ingredients-side{
+	position:absolute;
+	top:160px;
+	left:20px;
+	font-size: 18pt;
+	width:280px;
+}
+
+.sidebox{
+	font-family: 'Permanent Marker', cursive;
+	color:#0EE241;
+	font-size: 20pt;
+	background-color: rgba(0, 0, 0, 0.3);
+	width:100%;
+	height:450px;
+	margin-top: 7px;
+	overflow:auto;
+}
+
+.side-list li{
+	padding:10px 0 10px 50px;
+	color: navajowhite;
+	position: relative;
+}
+
+.side-list li .delete{
+	position: absolute;
+	top:28px;
+	left:16px;
+
+}
+
+.side-list li .one{
+	width:10px;
+	height:5px;
+	transform: rotate(45deg);
+	opacity: 0.7;
+	background-color: white;
+}
+
+.side-list li .two{
+	width:25px;
+	height:5px;
+	transform: rotate(315deg) translate(8px,-6px);
+	opacity: 0.7;
+	background-color: white;
+}
+
+.side-list li .delete:hover{
+	cursor:pointer;
+	opacity: 0.4;
+	animation: fadeindelete 0.5s;
+}
+
+@keyframes fadeindelete {
+    from { opacity: 1 }
+    to   { opacity: 0.4 }
+}
+
+.ingredients-confirm{
+	display: none;
+	animation: textappear 1s;
+	position:relative;
+	float:right;
+	height:120px;
+	width: 120px;
+	z-index: 1;
+}
+
+.shaker{
+	float:right;
+	width:120px;
+	padding-top: 10px;
+	z-index: 1;
+}
+
+.shaker:hover{
+	animation: shakeshakeshake 0.5s;
+}
+
+@keyframes shakeshakeshake{
+	25% {transform: rotate(-27deg);}
+	50% {transform: rotate(27deg);}
+	75% {transform: rotate(-27deg);}
+	100% {transform: rotate(0deg);}
+}
+
+.ingredients-confirm:hover{
+	cursor:pointer;
+
+}
+.ingredients-confirm:hover .shaker-text{
+	transition: 1s ease;
+	transform: translateX(-110px);
+	animation: textappear 1s;
+	opacity: 1;
+}
+
+.shaker-text{
+	opacity: 0;
+	position:absolute;
+	top:40px;
+	left:0px;
+	/*left:60px;*/
+}
+
+@keyframes textappear{
+	from { opacity: 0 }
+  to   { opacity: 1 }
+}
+
+
+/*Ingredients List Generator*/
+.ingredients-box{
+	position:relative;
+	margin:0;
+	padding:0;
+	top: 40px;
+	left: 350px;
+	width:75%;
+	/*Display none for debug*/
+	display: none;
+}
+
+#ingredients-input{
+	color:#5433f7;
+	font-size: 14pt;
+	margin-top:10px;
+	width:100%;
+	background-color: rgba(255, 255, 255, 0.8);
+	box-shadow:none;
+	transition: 1s ease;
+}
+
+#ingredients-input:focus{
+	border:1px solid #5433f7;
+	box-shadow: 0 0 10px #5433f7;
+}
+
+label.main-title{
+	font-size: 31pt;
+}
+
+.ingredients-choices{
+	display: none;
+	background-color: rgba(0,0,0,0.5);
+	margin-top:20px;
+	width:100%;
+	height:375px;
+	overflow: auto;
+}
+
+.ingredients-choices::-webkit-scrollbar, .sidebox::-webkit-scrollbar {
+  width: 15px;
+  height: 20px;
+  /* or add it to the track */
+}
+
+.ingredients-choices::-webkit-scrollbar-track, .sidebox::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.8);
+	background-color: rgba(255, 255, 255, 0.3);
+	border-radius: 10px;
+}
+
+.ingredients-choices::-webkit-scrollbar-thumb, .sidebox::-webkit-scrollbar-thumb {
+ background: #595959; 
+ border-radius: 10px;
+ -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+
+li a{
+	font-family: 'Permanent Marker', cursive;
+	display:block;
+	margin:0 auto;
+	text-align: center;
+	color:#0EE241;
+	cursor: pointer;
+	font-size: 20pt;
+	padding:10px;
+	/*rgba(89,89,89,0.8)*/
+}
+
+li a:hover{
+	color:navajowhite;
+	text-decoration:none;
+	background-color: #5433F7;
+	animation: fadeinBackground 0.4s, fadeinText 0.4s;
+}
+
+@keyframes fadeinBackground {
+  from { background-color: rgba(0,0,0,0) }
+  to   { background-color: #5433F7 }
+}
+
+@keyframes fadeinText {
+  from { color: #0EE241 }
+  to   { color: navajowhite }
+}
+
+@keyframes fadeoutIngredients {
+  from { opacity: 1 }
+  to   { opacity: 0 }
+}
+
+
+/*Instructions Page*/
+.blue{
+	background-color: rgba(46, 186, 254, 0.7);
+	left:-300px;
+
+}
+
+.instructions-box{
+	position:relative;
+	margin:0;
+	padding:0;
+	top: 40px;
+	left: 350px;
+	width:75%;
+	/*Display none for debug*/
+	display: none;
+}
+
+.instructions-list{
+	font-family: 'Permanent Marker', cursive;
+	background-color: rgba(0,0,0,0.5);;
+	padding:0 0 0 45px;
+	margin-top: 10px;
+	font-size: 60pt;
+	word-wrap: break-word;
+}
+
+.instructions-sidebox{
+	height:225px;
+}
+
+.instructions-side-list{
+	color:navajowhite;
+	margin-left:16px;
+}
+
+.measurements{
+	margin-top:10px;
+}
+
+.measurements-sidebox{
+	height:225px;
+}
+
+.measurements-side-list{
+	color:navajowhite;
+	margin-left:16px;
+}
+
+
+
+/*Cheers Styling*/
+.cheers-box{
+	position:relative;
+	margin:0;
+	padding:0;
+	top: 40px;
+	left: 350px;
+	width:75%;
+	/*Display none for debug*/
+	display: none;
+}
+
+.purple{
+	background-color: rgba(84,51,247,0.7);
+	left:-300px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.right-panel{
+	width: 662px;
+  font-size: 20pt;
+  text-align: center;
+  transform: rotate(-90deg);
+  position: fixed;
+  top: 443px;
+  right: -331px;
+	
+	/*Diplay none for debug*/
+  display:none;
+}
+
+.ingredients-mini{
+	float:right;
+	padding-bottom:38px;
+	max-width:33%;
+	width:33%;
+	right: -51px;
+  top: 198px;
+	background-color: rgba(14, 226, 65, 0.7);
+}
+
+
+.instructions-mini{
+	float:right;
+	padding-bottom:38px;
+	max-width:33%;
+	width:33%;
+  right: -51px;
+  top: 393px;
+	background-color: rgba(46, 186, 254, 0.7);
+}
+
+.results-mini{
+	float:right;
+	padding-bottom:38px;
+	max-width:33%;
+	width:33%;
+	right: -51px;
+  top: 591px;
+  text-align: center;
+	background-color: rgba(84,51,247,0.7);
+}
+
+.ingredients-mini:hover{
+	cursor:pointer;
+}
+
+.instructions-mini:hover{
+	cursor:pointer;
+}
+
+.results-mini:hover{
+	cursor:pointer;
+}
