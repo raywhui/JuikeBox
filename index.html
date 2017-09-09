@@ -35,36 +35,35 @@
 			<span>The Night.</span><span> Remixed.</span>
 		</h3><br>
 		<p class="landing-instructions text">* The modern app to help you become your own bartender while setting the mood with the latest music trends. *</p><br>
-
+		
 		<button class="drink-button drink button">Have a Drink</button>
 	</div>
 
-<!-- Ingredients UI -->
+
+
+
+<!--Top bar-->
 	<header class="container-fluid head">
 		<div class="row">
-			<div class="col-lg-offset-10 col-lg-2">
+			<div class="col-lg-offset-2 col-lg-5">
+				<h1 class="top-logo">JuikeBox</h1>
+			</div>
+			<div class="col-lg-offset-3 col-lg-2">
 				<div class="random-centered">
 					<h3 class="random-title">Not to your liking?</h3>
 					<button class="random button">Random</button>
-				<div>
+				</div>
 			</div>
 		</div>
 	</header>
 
-	<aside class="sidebar">
-		<div class="ingredients-list">
-			<div class="ingredients-title">Ingredients:</div>
-			<div class="ingredients-sidebox">
-				<ul class='side-list'></ul>
-			</div>
-		</div>
-	</aside>
-
+<!-- Ingredients UI -->
+	<!--Ingredients Middle Box-->
 	<div class='container-fluid ingredients-box'>
 		<div class="row">
 			<div class="col-lg-9">
 
-				<label class="ingredients-type">Type in your ingredients:</label>
+				<label class="main-title">Type in your ingredients:</label>
 				<input type="text" class="form-control" id="ingredients-input">
 				<div class='ingredients-choices'>
 					<ul class='choices'></ul>
@@ -74,6 +73,78 @@
 		</div>
 	</div>
 
+
+	<!--Ingredients Sidebar-->
+	<aside class="sidebar green" id="container">
+		<div class="ingredients-side">
+			<div class="title">Ingredients:</div>
+			<div class="sidebox">
+				<ul class='side-list'></ul>
+			</div>
+			<div class="ingredients-confirm">
+				<img src="./assets/media/cocktail_shaker.png" class="shaker">
+				<span class="shaker-text">Mix it Up.</span>
+			</div>
+		</div>
+	</aside>
+
+
+<!-- Instructions UI-->
+	<!--Instructions Middle Box-->
+	<div class='container-fluid instructions-box'>
+		<div class="row">
+			<div class="col-lg-9">
+
+				<label class="main-title">Follow these instructions:</label> <!--10 margin 1 border-->
+				<div class="instructions-list">
+					<div></div>
+				</div>
+
+				<!--Replace later-->
+				<button class="random button main-title">Next Step.</button>
+
+			</div>
+		</div>
+	</div>
+
+
+	<!--Instructions Sidebar-->
+	<aside class="sidebar blue" id="container">
+		<div class="ingredients-side">
+			<div class="title">Instructions:</div>
+			<div class="sidebox instructions-sidebox">
+				<ul class='instructions-side-list'>
+					<li>This is text instructions number 1.</li>
+					<li>test 2</li>
+					<li>test 3</li>
+					<li>test 4</li>
+					<li>test 5</li>
+					<li>test 6</li>
+					<li>test 7</li>
+				</ul>
+			</div>
+			<div class ="title measurements">Measurements:</div>
+				<div class="sidebox measurements-sidebox">
+				<ul class='measurements-side-list'>
+					<li>test 1</li>
+					<li>test 2</li>
+					<li>test 3</li>
+					<li>test 4</li>
+					<li>test 5</li>
+					<li>test 6</li>
+					<li>test 7</li>
+				</ul>
+			</div>
+		</div>
+	</aside>
+
+
+
+	<div class="right-panel">
+		<div class="ingredients-mini right-side">Ingredients</div>
+		<div class="instructions-mini right-side">Instructions</div>
+		<div class="results-mini right-side">Cheers</div>
+	</div>
 
 <!--Drinks-->
 	<div id="drinks-container">
@@ -119,6 +190,10 @@
 <script src="./assets/javascript/drinkingText.js"></script>
 <script type="text/javascript">
 
+
+var currentColor = "blue";
+
+
 //Landing music vol
 	$(".landing-music").prop('volume',0.1);
 
@@ -126,10 +201,20 @@
 	$(".drink-button").on('click', function(){
 
 		$('.landing-text').fadeOut(850,'linear');
+		currentColor = "green";
 
 	});
 
-//Array to list function
+//INGREDIENTS PAGE FUNCTIONALITY
+//Ingredients array to be pushed to API for random recipe
+var finalIngredients = []; //Ask kevin wut the array should b called
+var ingredientsCounter = 0;
+
+
+//Dummy code
+var dummyInstructionsArray = ["This is text instructions number 1.","This is text instructions number 2.","This is text instructions number 3.","This is text instructions number 4.","This is text instructions number 5."];
+
+//Array to ingredients list function
 function choicesList(){
 	//Takes input val
 	var typedIngredient = $('input').val();
@@ -149,7 +234,6 @@ function choicesList(){
 				$('.choices').append(
 					  '<li><a>' + ingredients[i] + '</a></li>'
 					);
-				console.log(ingredients[i]);
 		} //if
 		else if (typedIngredient === ""){
 			$('.ingredients-choices').css('display','none');
@@ -174,12 +258,22 @@ function choicesList(){
 				'</div>' + textVal + 
 			'</li>'
 		);
+		//pushes to finalIngredients Array
+		finalIngredients.push(textVal);
+
 		//removes text from DOM
 		$(this).parent().remove();
 		console.log(ogIndex);
 
 		//removes text from array
 		ingredients.splice(ogIndex, 1);
+		ingredientsCounter++;
+		console.log(ingredientsCounter);
+
+		if (ingredientsCounter <= 1){
+			console.log('yay');
+			$('.ingredients-confirm').css('display', 'block');
+		}
 
 	});//event delegation li a click
 
@@ -187,6 +281,10 @@ function choicesList(){
 		var textSide = $(this).parent().text();
 		var dataIndex = $(this).attr('data-index');
 		var intConverter = parseInt(dataIndex);
+
+		//remove from finalIngredients Array
+		var removalIndex = finalIngredients.indexOf(textSide);
+		finalIngredients.splice(removalIndex,1);
 
 		//readds text into array
 		ingredients.splice(intConverter,0,textSide);
@@ -196,9 +294,69 @@ function choicesList(){
 
 		//repeat function to readd dynamically to DOM
 		choicesList();
+		ingredientsCounter--;
+		console.log(ingredientsCounter);
+
+		if (ingredientsCounter === 0){
+			$('.ingredients-confirm').css('display', 'none');
+		}
 	});
-	//WHATS THE MINIMUM AMT OF INGREDIENTS WE NEED?
-	//Next goal. Make button to put ingredients list into array and transition to instructions page.
+
+	$('.ingredients-confirm').on('click','.shaker',function(){
+		$('.sidebar').animate({
+			left: '-300px',
+		},400);//can put callback function after linear
+		$('.ingredients-box').fadeOut(400);
+		//$('.instructions-list').text(dummyInstructionsArray[0]); when recipte generates
+	});
+
+	//Be able to go back to ingredients, change, hit confirm, then generates new instructions
+	$('.instructions-list').text(dummyInstructionsArray[0]);//delete when finished
+
+
+
+	//Right side panel functionality
+	$('.ingredients-mini').on('click',function(){
+
+		if (currentColor === "blue"){
+			$('.instructions-box').fadeOut(400, function(){
+				$('.ingredients-box').fadeIn(400);
+			});
+
+			$('.blue').animate({left: '-300px'},400, function(){
+				$('.green').animate({left: '0px',},400);
+			});
+		}
+
+		currentColor = "green";
+		console.log('Color is now: ' + currentColor);
+	});
+
+
+	$('.instructions-mini').on('click',function(){
+
+		if (currentColor === "green"){
+			$('.ingredients-box').fadeOut(400, function(){
+				$('.instructions-box').fadeIn(400);
+			});
+
+			$('.green').animate({left: '-300px'},400, function(){
+				$('.blue').animate({left: '0px',},400);
+			});
+		}
+
+		currentColor = "blue";
+		console.log('Color is now: ' + currentColor);
+	});
+
+	// $('.results-mini').on('click',function(){
+	// 	currentColor = "purple";
+	// 	//appearing
+
+
+	// 	//disappearing
+	// });
+
 
 </script>
 
