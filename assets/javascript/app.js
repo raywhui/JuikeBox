@@ -37,11 +37,11 @@ function needIngredients() {
 }
 
 function needLiqour() {
-	console.log("NEED MORE LIQOUR!");
+	console.log("NEED MORE LIQOUR!"); // THIS FUNCTION PRODUCES THE ERROR MESSAGE FOR WHEN THE USER'S INGREDIENTS DON'T CONTAIN ENOUGH LIQOUR
 }
 
 function noDice() {
-	console.log("Sorry, we couldn't find any drinks that match your ingredients");
+	console.log("Sorry, we couldn't find any drinks that match your ingredients"); // THIS FUNCTION PRODUCES THE ERROR MESSAGE FOR WHEN THE INGREDIENTS ENTERED BY THE USER FULFILLS THE BASIC REQUIREMENTS OF AT LEAST 1 BASE AND 1 OTHER
 }
 
 function executeGo() {
@@ -64,7 +64,6 @@ $("#go2-button").on("click", function() {
 var baseDrinks = [];
 var suppDrinks = [];
 var sharedDrinks = [];
-var suppDrinksPopped = false;
 var necessaryIngs = [];
 var eligibleDrinks = [];
 var drinkAssigned = false;
@@ -125,8 +124,6 @@ function assignTargetBase() {
 	}
 	if (userList.length > 1) {
 		suppIngs = userList.slice();
-		console.log("suppIngs before targetBase: " + suppIngs);
-		console.log("baseIngs before targetBase: " + baseIngs);
 		if (baseIngs.length > 0) {
 			var r = Math.floor((Math.random() * baseIngs.length) + 1) - 1;
 			targetBase = baseIngs[r];
@@ -171,7 +168,7 @@ function assignTargetSupp() {
 	var index = suppIngs.indexOf(targetSupp);
   	if (index > -1) {
     	suppIngs.splice(index, 1);
-    	console.log("suppIng: " + suppIngs, " targetSupp: " + targetSupp);
+    	console.log("targetSupp: " + targetSupp);
 	}
 	popSuppDrinks();	
 }
@@ -230,7 +227,7 @@ function successDrink() {
 		console.log("SUCCESS! we will make a: " + finalDrink);
 		return finalDrink;
 	} else {
-		console.log("successDrink: no eligible drinks!!!");
+		console.log("successDrink ERROR: no eligible drinks!!!");
 	}
 }
 
@@ -374,7 +371,6 @@ function pairIM(response) {
 
 function checkImage(response) {
 	if (typeof response.drinks[0].strDrinkThumb === 'string') {
-		console.log(response.drinks[0].strDrinkThumb);
 		var img = '<img src="' + response.drinks[0].strDrinkThumb + '">';
 		$("#image").append(img);
 	} else {console.log("no thumb");}
