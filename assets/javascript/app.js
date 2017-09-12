@@ -6,23 +6,7 @@ var baseList = ["Vodka",
 "Dark rum",
 "Scotch",
 "Rum",
-"Bourbon",
-"Peach schnapps",
-"151 proof rum",
-"Southern Comfort",
-"Blended whiskey",
-"Absolut Vodka",
-"Jack Daniels",
-"Wild Turkey",
-"Crown Royal",
-"Irish whiskey",
-"Añejo rum",
-"Whiskey",
-"Johnnie Walker",
-"Jim Beam",
-"Gold tequila",
-"Rye whiskey",
-"Whisky"];
+"Bourbon"];
 
 var userList = [];
 var baseIngs = [];
@@ -56,6 +40,10 @@ function needLiqour() {
 	console.log("NEED MORE LIQOUR!");
 }
 
+function noDice() {
+	console.log("Sorry, we couldn't find any drinks that match your ingredients");
+}
+
 function executeGo() {
 	totalIngCheck();
 }
@@ -66,7 +54,11 @@ $("#go-button").on("click", function() {
 });
 
 $("#go2-button").on("click", function() {
-	getRecipe(finalDrink);
+	if (drinkAssigned) {
+		getRecipe(finalDrink);
+	} else {
+		noDice();
+	}
 });
 
 var baseDrinks = [];
