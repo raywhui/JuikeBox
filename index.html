@@ -22,8 +22,8 @@
 	<canvas class='group-logo' width="600px" height="600px"></canvas>
 	
 
-	<video class="background" muted loop>
-		<source src="./assets/media/dance_scene.mp4" type="video/mp4" autoplay muted loop>
+	<video class="background" autoplay muted loop>
+		<source src="./assets/media/Collins_Loop.mp4" type="video/mp4" autoplay muted loop>
 	</video>
 
 	<audio id="landing-music" autoplay loop>
@@ -240,14 +240,12 @@
 <script type="text/javascript">
 
 setTimeout(function(){
-	$('.landing-text').fadeIn(400);
-	$('canvas').fadeOut(400);
-	$('.background').fadeIn(400);
+	$('.landing-text').fadeIn(800);
+	$('canvas').fadeOut(800);
+	$('.background').fadeIn(800);
 },2500);
 
-
 var currentColor = "";
-
 
 //Landing music vol
 	var intellaBeats = document.getElementById('landing-music');
@@ -274,8 +272,8 @@ var currentColor = "";
 			$('.green').animate({left: '0px',},400);
 			$('.ingredients-box').fadeIn(400);
 			$('.ingredients-mini').fadeIn(400);
-
 		});
+
 		currentColor = "green";
 
 	});
@@ -345,7 +343,7 @@ function choicesList(){
 		ingredientsCounter++;
 		console.log(ingredientsCounter);
 
-		if (ingredientsCounter === 2){
+		if (ingredientsCounter >= 2){
 			console.log('yay');
 			$('.ingredients-confirm').css('display', 'block');
 		}
@@ -372,7 +370,7 @@ function choicesList(){
 		ingredientsCounter--;
 		console.log(ingredientsCounter);
 
-		if (ingredientsCounter >= 1){
+		if (ingredientsCounter <= 1){
 			$('.ingredients-confirm').css('display', 'none');
 		}
 	});

@@ -6,8 +6,8 @@ html{
 
 body{
 	/*Color grey for debug*/
-	/*background-color: black; */
-	background-color: #D3D3D3;
+	background-color: black; 
+	/*background-color: #D3D3D3;*/
   font-family: 'Poppins', sans-serif;
 	color:white;
 }
@@ -153,7 +153,7 @@ h3 span:nth-child(2){
 header.head{
 	/*Display none for debug*/
 	display: none;
-	background-color: rgba(36,36,36,1);
+	background-color: rgba(36,36,36,0.7);
 	height: 150px;
 }
 

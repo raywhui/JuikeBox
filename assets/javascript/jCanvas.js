@@ -2,8 +2,8 @@
 	$('.group-logo').drawArc({
 		layer:true,
 		name:'circle',
-		strokeStyle: '#000',
-		strokeWidth: 5,
+		strokeStyle: 'white',
+		strokeWidth: 20,
 		x: 300, y: 300,
 		radius: 200,
 		start:0, end:0
@@ -16,7 +16,7 @@
 	$('.group-logo').drawArc({
 		layer:true,
 		name:'c',
-		strokeStyle: '#000',
+		strokeStyle: 'white',
 		strokeWidth: 12,
 		ccw: true,
 		x: 150+54, y: 300,
