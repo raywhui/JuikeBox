@@ -13,6 +13,7 @@ body{
 }
 
 video.background{
+	display:none;
 	position: fixed;
 	opacity:0.15;
 	min-height: 100%;
@@ -23,6 +24,14 @@ video.background{
   left:0;
   z-index:-100;
   filter:contrast(150%);
+}
+
+canvas{
+	background-color:transparent;
+	position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .landing-text{
@@ -39,12 +48,26 @@ video.background{
   /*margin: -50% 0 0 -50%;*/
 
   /*Display for debug*/
-  /*display:none;*/
+  display:none;
 }
 
 h1{
 	font-size:93pt;
 	font-weight: bold;
+}
+
+.audio-control{
+  width: 70px;
+  padding-left: 10px;
+}
+
+
+.pause{
+	padding: 10px;
+}
+
+.audio-control:hover{
+	cursor:pointer;
 }
 
 .credits{
