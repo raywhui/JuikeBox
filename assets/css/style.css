@@ -47,6 +47,17 @@ h1{
 	font-weight: bold;
 }
 
+.credits{
+	position:fixed;
+	right:0;
+	bottom: 0;
+}
+
+.intellaflow{
+	color:white;
+	font-size:13pt;
+}
+
 /*h1 span:nth-child(1){
 	color:#2EBAFE; blue
 }
@@ -481,7 +492,11 @@ li a:hover{
 	left:-300px;
 }
 
-
+.musical-sidebox{
+	font-family: 'Poppins', sans-serif;
+	color:white;
+	padding:15px;
+}
 
 
 
