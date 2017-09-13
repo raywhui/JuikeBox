@@ -228,17 +228,9 @@
 	</script>
 
 <!--DOM Manipulation + Logic -->
-
-<script src="assets/javascript/drinkingText.js"></script>
-<script type="text/javascript">
-var currentColor = "";
-//Landing music vol
-	$(".landing-music").prop('volume',0.1);
-//Landing drink button transition to ingredients	
-	$(".martini-box").on('click', function(){
-    
 <script src="./assets/javascript/drinkingText.js"></script>
 <script src="./assets/javascript/jCanvas.js"></script>
+<script src="./assets/javascript/instructions+finalpage.js"></script>
 
 <script type="text/javascript">
 
@@ -337,6 +329,7 @@ function choicesList(){
 			$('.ingredients-confirm').css('display', 'block');
 		}
 	});//event delegation li a click
+
 	$('.side-list').on('click','.delete', function(){
 		var textSide = $(this).parent().text();
 		var dataIndex = $(this).attr('data-index');
@@ -358,7 +351,9 @@ function choicesList(){
 		if (ingredientsCounter <= 1){
 			$('.ingredients-confirm').css('display', 'none');
 		}
+
 	});
+
 	$('.ingredients-confirm').on('click','.shaker',function(){
 		$('.green').animate({ left: '-300px'},400, function(){
 			$('.blue').animate({ left: '0px'},400)
@@ -384,6 +379,7 @@ function choicesList(){
 		});
 		currentColor = "purple";
 	})
+
 	//Right side panel functionality
 	$('.ingredients-mini').on('click',function(){
 		if (currentColor === "blue"){
@@ -405,6 +401,7 @@ function choicesList(){
 		currentColor = "green";
 		console.log('Color is now: ' + currentColor);
 	});
+
 	$('.instructions-mini').on('click',function(){
 		if (currentColor === "green"){
 			$('.ingredients-box').fadeOut(400, function(){
@@ -425,7 +422,8 @@ function choicesList(){
 		currentColor = "blue";
 		console.log('Color is now: ' + currentColor);
 	});
-	$('.results-mini').on('click',function(){
+
+	$('.results-mini').on('click', function(){
 		if (currentColor === "green"){
 			$('.ingredients-box').fadeOut(400, function(){
 				$('.cheers-box').fadeIn(400);
@@ -433,7 +431,7 @@ function choicesList(){
 			$('.green').animate({left: '-300px'},400, function(){
 				$('.purple').animate({left: '0px',},400);
 			});
-		}
+			}
 		else if (currentColor === "blue"){
 			$('.instructions-box').fadeOut(400, function(){
 				$('.cheers-box').fadeIn(400);
@@ -441,10 +439,12 @@ function choicesList(){
 			$('.blue').animate({left: '-300px'},400, function(){
 				$('.purple').animate({left: '0px',},400);
 			});
-		}
+		};
 		currentColor = "purple";
 		console.log('Color is now: ' + currentColor);
-	});
+		});
+
+
 </script>
 
 
