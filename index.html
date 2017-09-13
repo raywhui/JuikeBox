@@ -63,10 +63,7 @@
 				<h1 class="top-logo juikebox">JuikeB<img class='audio-control play' src='./assets/media/play.png'>x</h1>
 			</div>
 			<div class="col-lg-offset-3 col-lg-2">
-				<div class="random-centered">
-					<h3 class="random-title">Not to your liking?</h3>
-					<button class="random button">Random</button>
-				</div>
+<!--				<canvas class='group-logo smaller-logo' width="236px" height="149px"></canvas> -->
 			</div>
 		</div>
 	</header>
@@ -178,9 +175,18 @@
 		<div class="ingredients-side">
 			<div class="title">Music:</div>
 			<div class="sidebox musical-sidebox">
-				<div>Album Cover: </div>
-				<div>Artist: </div>
-				<div>Song Title: </div>
+
+				<div>Artist Cover: 
+					<img class='scPicture' width="150px" height="150px">
+				</div><br>
+
+				<div>Song Title: 
+					<div class='songTitle'></div>
+				</div><br>
+
+				<div>Artist: 
+					<div class='artist'></div>
+				</div>
 			</div>
 		</div>
 	</aside>
@@ -233,6 +239,33 @@
 <script src="./assets/javascript/instructions+finalpage.js"></script>
 
 <script type="text/javascript">
+	var appVersion = '1505226596';
+	var clientId = 'JlZIsxg2hY5WnBgtn3jfS0UYCl0K8DOg';
+
+	$.ajax({
+		url: 'http://api.soundcloud.com/resolve',
+		data: {
+		  url: 'https://soundcloud.com/intellaflow/yellow_diamonds',
+		  client_id: clientId
+		},
+		success: function(data) {
+		  // debugger;
+		  console.log(data)
+		  var scPic = data.artwork_url;
+		  var scArtist = data.user.username;
+		  var scTitle = data.title;
+		  $('.scPicture').attr('src',scPic);
+		  $('.artist').text(scArtist);
+		  $('.songTitle').text(scTitle);
+
+		},
+		error: function(err) {
+		  // bad stuff here
+		}
+
+	})
+
+
 
 setTimeout(function(){
 	$('.landing-text').fadeIn(800);
@@ -259,6 +292,8 @@ var currentColor = "";
 		$('.audio-control').addClass('play').removeClass('pause');
 	});
 
+
+
 //Landing drink button transition to ingredients	
 	$(".martini-box").on('click', function(){
 		$(".credits").fadeOut(850);
@@ -267,9 +302,11 @@ var currentColor = "";
 			$('.green').animate({left: '0px',},400);
 			$('.ingredients-box').fadeIn(400);
 			$('.ingredients-mini').fadeIn(400);
+			// $('.smaller-logo').fadeIn(400);
 		});
 
 		currentColor = "green";
+
 	});
 //INGREDIENTS PAGE FUNCTIONALITY
 //Ingredients array to be pushed to API for random recipe
@@ -443,6 +480,9 @@ function choicesList(){
 		currentColor = "purple";
 		console.log('Color is now: ' + currentColor);
 		});
+
+
+
 
 
 </script>
