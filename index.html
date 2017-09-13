@@ -5,7 +5,7 @@
 
 	
 	<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
-
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jcanvas/20.1.2/jcanvas.js"></script>
 
 	<link rel="stylesheet" type="text/css" href="./assets/css/reset.css">
 	
@@ -18,18 +18,22 @@
 </head>
 
 <body>
+
+	<canvas class='group-logo' width="600px" height="600px"></canvas>
 	
-	<video class="background" muted loop>
-		<source src="./assets/media/dance_scene.mp4" type="video/mp4" autoplay muted loop>
+
+	<video class="background" autoplay muted loop>
+		<source src="./assets/media/Collins_Loop.mp4" type="video/mp4" autoplay muted loop>
 	</video>
 
-	<audio class="landing-music" loop>
-		<source src="./assets/media/clubbing_music.mp3" type="audio/mp3">
+	<audio id="landing-music" autoplay loop>
+		<source src="./assets/media/juicebox_320kbps_130bpm.mp3" type="audio/mp3">
 	</audio>
 
+	
 	<div class="landing-text">
 		<h1 class="logo text">
-			<span>JuikeBox</span>
+			<span class='juikebox'>JuikeB<img class='audio-control play' src='./assets/media/play.png'>x</span>
 		</h1>
 		<h3 class="slogan text">
 			<span>The Night.</span><span> Remixed.</span>
@@ -38,9 +42,16 @@
 		
 		<div class='martini-box'>
 			<img src="./assets/media/drink_icon.png" class="martini">
-			<div class='whoosh'>Have a Drink</div>
+			<div class='whoosh'>Have a Drink.</div>
 		</div>
+
 	</div>
+
+	<div class='credits'>
+		Background audio by: 
+		<a class="intellaflow" href="https://soundcloud.com/intellaflow" target="_blank">intellaFLOW</a>
+	</div> 
+
 
 
 
@@ -49,7 +60,7 @@
 	<header class="container-fluid head">
 		<div class="row">
 			<div class="col-lg-offset-2 col-lg-5">
-				<h1 class="top-logo">JuikeBox</h1>
+				<h1 class="top-logo juikebox">JuikeB<img class='audio-control play' src='./assets/media/play.png'>x</h1>
 			</div>
 			<div class="col-lg-offset-3 col-lg-2">
 				<div class="random-centered">
@@ -66,7 +77,7 @@
 		<div class="row">
 			<div class="col-lg-9">
 				<label class="main-title">Type in your ingredients:</label>
-				<input type="text" class="form-control" id="ingredients-input">
+				<input type="text" class="form-control" id="ingredients-input" placeholder="Minimum 2 Ingredients">
 				<div class='ingredients-choices'>
 					<ul class='choices'></ul>
 				</div>
@@ -166,7 +177,10 @@
 	<aside class="sidebar purple" id="container">
 		<div class="ingredients-side">
 			<div class="title">Music:</div>
-			<div class="sidebox">
+			<div class="sidebox musical-sidebox">
+				<div>Album Cover: </div>
+				<div>Artist: </div>
+				<div>Song Title: </div>
 			</div>
 		</div>
 	</aside>
@@ -214,6 +228,7 @@
 	</script>
 
 <!--DOM Manipulation + Logic -->
+
 <script src="assets/javascript/drinkingText.js"></script>
 <script type="text/javascript">
 var currentColor = "";
@@ -221,12 +236,47 @@ var currentColor = "";
 	$(".landing-music").prop('volume',0.1);
 //Landing drink button transition to ingredients	
 	$(".martini-box").on('click', function(){
+    
+<script src="./assets/javascript/drinkingText.js"></script>
+<script src="./assets/javascript/jCanvas.js"></script>
+
+<script type="text/javascript">
+
+setTimeout(function(){
+	$('.landing-text').fadeIn(800);
+	$('canvas').fadeOut(800);
+	$('.background').fadeIn(800);
+},2500);
+
+var currentColor = "";
+
+//Landing music vol
+	var intellaBeats = document.getElementById('landing-music');
+	$("#landing-music").prop('volume',0.1);
+
+	$(".juikebox").on('click', '.play', function(){
+		intellaBeats.pause();
+		$('.audio-control').attr("src","./assets/media/pause.png");
+		$('.audio-control').addClass('pause').removeClass('play');
+
+	});
+
+	$(".juikebox").on('click', '.pause', function(){
+		intellaBeats.play();
+		$('.audio-control').attr("src","./assets/media/play.png");
+		$('.audio-control').addClass('play').removeClass('pause');
+	});
+
+//Landing drink button transition to ingredients	
+	$(".martini-box").on('click', function(){
+		$(".credits").fadeOut(850);
 		$('.landing-text').fadeOut(850,'linear',function(){
 			$('.head').fadeIn(400);
 			$('.green').animate({left: '0px',},400);
 			$('.ingredients-box').fadeIn(400);
 			$('.ingredients-mini').fadeIn(400);
 		});
+
 		currentColor = "green";
 	});
 //INGREDIENTS PAGE FUNCTIONALITY
@@ -280,7 +330,9 @@ function choicesList(){
 		ingredients.splice(ogIndex, 1);
 		ingredientsCounter++;
 		console.log(ingredientsCounter);
-		if (ingredientsCounter <= 1){
+
+
+		if (ingredientsCounter >= 2){
 			console.log('yay');
 			$('.ingredients-confirm').css('display', 'block');
 		}
@@ -302,7 +354,8 @@ function choicesList(){
 		choicesList();
 		ingredientsCounter--;
 		console.log(ingredientsCounter);
-		if (ingredientsCounter === 0){
+
+		if (ingredientsCounter <= 1){
 			$('.ingredients-confirm').css('display', 'none');
 		}
 	});
