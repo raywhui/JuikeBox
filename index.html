@@ -6,6 +6,7 @@
 	
 	<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jcanvas/20.1.2/jcanvas.js"></script>
 
 	<link rel="stylesheet" type="text/css" href="./assets/css/reset.css">
 	
@@ -18,18 +19,22 @@
 </head>
 
 <body>
+
+	<canvas class='group-logo' width="600px" height="600px"></canvas>
 	
-	<video class="background" muted loop>
-		<source src="./assets/media/dance_scene.mp4" type="video/mp4" autoplay muted loop>
+
+	<video class="background" autoplay muted loop>
+		<source src="./assets/media/Collins_Loop.mp4" type="video/mp4" autoplay muted loop>
 	</video>
 
-	<audio class="landing-music" loop>
-		<source src="./assets/media/clubbing_music.mp3" type="audio/mp3">
+	<audio id="landing-music" autoplay loop>
+		<source src="./assets/media/juicebox_320kbps_130bpm.mp3" type="audio/mp3">
 	</audio>
 
+	
 	<div class="landing-text">
 		<h1 class="logo text">
-			<span>JuikeBox</span>
+			<span class='juikebox'>JuikeB<img class='audio-control play' src='./assets/media/play.png'>x</span>
 		</h1>
 		<h3 class="slogan text">
 			<span>The Night.</span><span> Remixed.</span>
@@ -38,9 +43,16 @@
 		
 		<div class='martini-box'>
 			<img src="./assets/media/drink_icon.png" class="martini">
-			<div class='whoosh'>Have a Drink</div>
+      
+			<div class='whoosh'>Have a Drink.</div>
 		</div>
+
 	</div>
+
+	<div class='credits'>
+		Background audio by: 
+		<a class="intellaflow" href="https://soundcloud.com/intellaflow" target="_blank">intellaFLOW</a>
+	</div> 
 
 
 
@@ -49,13 +61,10 @@
 	<header class="container-fluid head">
 		<div class="row">
 			<div class="col-lg-offset-2 col-lg-5">
-				<h1 class="top-logo">JuikeBox</h1>
+				<h1 class="top-logo juikebox">JuikeB<img class='audio-control play' src='./assets/media/play.png'>x</h1>
 			</div>
 			<div class="col-lg-offset-3 col-lg-2">
-				<div class="random-centered">
-					<h3 class="random-title">Not to your liking?</h3>
-					<button class="random button">Random</button>
-				</div>
+<!--				<canvas class='group-logo smaller-logo' width="236px" height="149px"></canvas> -->
 			</div>
 		</div>
 	</header>
@@ -66,7 +75,7 @@
 		<div class="row">
 			<div class="col-lg-9">
 				<label class="main-title">Type in your ingredients:</label>
-				<input type="text" class="form-control" id="ingredients-input">
+				<input type="text" class="form-control" id="ingredients-input" placeholder="Minimum 2 Ingredients">
 				<div class='ingredients-choices'>
 					<ul class='choices'></ul>
 				</div>
@@ -99,6 +108,7 @@
 
 				<label class="main-title">Follow these instructions:</label> <!--10 margin 1 border-->
 				<div class="instructions-list">
+
 					<div></div>
 				</div>
 
@@ -120,26 +130,27 @@
 		<div class="ingredients-side">
 			<div class="title">Instructions:</div>
 			<div class="sidebox instructions-sidebox">
-				<ul class='instructions-side-list'>
-					<li>This is text instructions number 1.</li>
+				<ul class='instructions-side-list' id="insList">
+					<!--<li>This is text instructions number 1.</li>
 					<li>test 2</li>
 					<li>test 3</li>
 					<li>test 4</li>
 					<li>test 5</li>
 					<li>test 6</li>
 					<li>test 7</li>
+					<li>test 7</li> !-->
 				</ul>
 			</div>
 			<div class ="title measurements">Measurements:</div>
 				<div class="sidebox measurements-sidebox">
-				<ul class='measurements-side-list'>
-					<li>test 1</li>
+				<ul class='measurements-side-list' id="mesList">
+					<!--<li>test 1</li>
 					<li>test 2</li>
 					<li>test 3</li>
 					<li>test 4</li>
 					<li>test 5</li>
 					<li>test 6</li>
-					<li>test 7</li>
+					<li>test 7</li>!-->
 				</ul>
 			</div>
 		</div>
@@ -153,8 +164,8 @@
 			<div class="col-lg-9">
 
 				<label class="main-title">Here's your drink:</label>
-				<div class="main-title drink">Insert Drink Name</div>
-				<div class="main-title">Insert Image</div>
+				<div class="main-title drink" id="drinkName"></div>
+				<div class="main-title" id="drinkImg"></div>
 				<div class="main-title">That'll be $500.</div>
 
 			</div>
@@ -166,7 +177,19 @@
 	<aside class="sidebar purple" id="container">
 		<div class="ingredients-side">
 			<div class="title">Music:</div>
-			<div class="sidebox">
+			<div class="sidebox musical-sidebox">
+
+				<div>Artist Cover: 
+					<img class='scPicture' width="150px" height="150px">
+				</div><br>
+
+				<div>Song Title: 
+					<div class='songTitle'></div>
+				</div><br>
+
+				<div>Artist: 
+					<div class='artist'></div>
+				</div>
 			</div>
 		</div>
 	</aside>
@@ -204,7 +227,6 @@
 <!--Drinks Functions + Logic-->
 	<script type="text/javascript">
 
-
 	</script>
 
 
@@ -215,43 +237,93 @@
 
 <!--SoundCloud Functions + Logic-->
 	<script type="text/javascript">
-
+    
 	</script>
 
 <!--DOM Manipulation + Logic -->
-<script src="assets/javascript/drinkingText.js"></script>
-<script type="text/javascript">
+<script src="./assets/javascript/drinkingText.js"></script>
+<script src="./assets/javascript/jCanvas.js"></script>
+<script src="./assets/javascript/instructions+finalpage.js"></script>
 
+<script type="text/javascript">
+	var appVersion = '1505226596';
+	var clientId = 'JlZIsxg2hY5WnBgtn3jfS0UYCl0K8DOg';
+
+	$.ajax({
+		url: 'http://api.soundcloud.com/resolve',
+		data: {
+		  url: 'https://soundcloud.com/intellaflow/yellow_diamonds',
+		  client_id: clientId
+		},
+		success: function(data) {
+		  // debugger;
+		  console.log(data)
+		  var scPic = data.artwork_url;
+		  var scArtist = data.user.username;
+		  var scTitle = data.title;
+		  $('.scPicture').attr('src',scPic);
+		  $('.artist').text(scArtist);
+		  $('.songTitle').text(scTitle);
+
+		},
+		error: function(err) {
+		  // bad stuff here
+		}
+
+	})
+
+
+
+setTimeout(function(){
+	$('.landing-text').fadeIn(800);
+	$('canvas').fadeOut(800);
+	$('.background').fadeIn(800);
+},2500);
 
 var currentColor = "";
 
-
 //Landing music vol
-	$(".landing-music").prop('volume',0.1);
+	var intellaBeats = document.getElementById('landing-music');
+	$("#landing-music").prop('volume',0.1);
+
+	$(".juikebox").on('click', '.play', function(){
+		intellaBeats.pause();
+		$('.audio-control').attr("src","./assets/media/pause.png");
+		$('.audio-control').addClass('pause').removeClass('play');
+
+	});
+
+	$(".juikebox").on('click', '.pause', function(){
+		intellaBeats.play();
+		$('.audio-control').attr("src","./assets/media/play.png");
+		$('.audio-control').addClass('play').removeClass('pause');
+	});
+
+
 
 //Landing drink button transition to ingredients	
 	$(".martini-box").on('click', function(){
+		$(".credits").fadeOut(850);
 
 		$('.landing-text').fadeOut(850,'linear',function(){
 			$('.head').fadeIn(400);
 			$('.green').animate({left: '0px',},400);
 			$('.ingredients-box').fadeIn(400);
 			$('.ingredients-mini').fadeIn(400);
-
+			// $('.smaller-logo').fadeIn(400);
 		});
+
 		currentColor = "green";
 
 	});
-
 //INGREDIENTS PAGE FUNCTIONALITY
 //Ingredients array to be pushed to API for random recipe
 var finalIngredients = []; //Ask kevin wut the array should b called
 var ingredientsCounter = 0;
-
-
 //Dummy code
 var dummyInstructionsArray = ["This is text instructions number 1.","This is text instructions number 2.","This is text instructions number 3.","This is text instructions number 4.","This is text instructions number 5."];
 
+  
 //Array to ingredients list function
 function choicesList(){
 	//Takes input val
@@ -259,16 +331,12 @@ function choicesList(){
 
 	//Used to empty page each keypress
 	$('.choices').empty();
-
 	//For loop to check through ingredients array
 	for (var i = 0; i < ingredients.length; i++) {
-
 		var converter = ingredients[i].toUpperCase();
-
 		//Removes case sensitivity for easy comparison
 		if (converter.indexOf(typedIngredient.toUpperCase()) != -1 && typedIngredient !== "" && typedIngredient !== " "){
 				$('.ingredients-choices').css('display','block');
-
 				$('.choices').append(
 					  '<li><a>' + ingredients[i] + '</a></li>'
 					);
@@ -279,7 +347,6 @@ function choicesList(){
 		}//else if
 	}//for loop
 }//choicesList
-
 
 //Ingredients input
 	$('input').on('keyup', function(){
@@ -308,11 +375,11 @@ function choicesList(){
 		ingredientsCounter++;
 		console.log(ingredientsCounter);
 
-		if (ingredientsCounter <= 1){
+
+		if (ingredientsCounter >= 2){
 			console.log('yay');
 			$('.ingredients-confirm').css('display', 'block');
 		}
-
 	});//event delegation li a click
 
 	$('.side-list').on('click','.delete', function(){
@@ -323,7 +390,6 @@ function choicesList(){
 		//remove from finalIngredients Array
 		var removalIndex = finalIngredients.indexOf(textSide);
 		finalIngredients.splice(removalIndex,1);
-
 		//readds text into array
 		removeIng(textSide);
 		ingredients.splice(intConverter,0,textSide);
@@ -336,9 +402,12 @@ function choicesList(){
 		ingredientsCounter--;
 		console.log(ingredientsCounter);
 
-		if (ingredientsCounter === 0){
+
+		if (ingredientsCounter <= 1){
 			$('.ingredients-confirm').css('display', 'none');
 		}
+
+
 	});
 
 	$('.ingredients-confirm').on('click','.shaker',function(){
@@ -355,15 +424,11 @@ function choicesList(){
 
 		currentColor = "blue";
 	});
-
 	//Be able to go back to ingredients, change, hit confirm, then generates new instructions
 	$('.instructions-list').text(dummyInstructionsArray[0]);//delete when finished
-
-
 	$('.receipt').on('click',function(){
 		$('.blue').animate({ left: '-300px'},400, function(){
 			$('.purple').animate({ left: '0px'},400)
-
 			//API CALL TO INSTRUCTIONS NEEDS TO BE DONE BEFORE FADEIN
 
 		});//can put callback function after linear
@@ -374,9 +439,6 @@ function choicesList(){
 
 		currentColor = "purple";
 	})
-
-
-
 
 	//Right side panel functionality
 	$('.ingredients-mini').on('click',function(){
@@ -432,16 +494,18 @@ function choicesList(){
 		console.log('Color is now: ' + currentColor);
 	});
 
-	$('.results-mini').on('click',function(){
+
+	$('.results-mini').on('click', function(){
 		if (currentColor === "green"){
 			$('.ingredients-box').fadeOut(400, function(){
 				$('.cheers-box').fadeIn(400);
 			});
 
+
 			$('.green').animate({left: '-300px'},400, function(){
 				$('.purple').animate({left: '0px',},400);
 			});
-		}
+			}
 
 		else if (currentColor === "blue"){
 			$('.instructions-box').fadeOut(400, function(){
@@ -451,11 +515,13 @@ function choicesList(){
 			$('.blue').animate({left: '-300px'},400, function(){
 				$('.purple').animate({left: '0px',},400);
 			});
-		}
-
+		};
 		currentColor = "purple";
 		console.log('Color is now: ' + currentColor);
-	});
+		});
+
+
+
 
 
 </script>
