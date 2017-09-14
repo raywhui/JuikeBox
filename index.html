@@ -278,12 +278,12 @@
 		  var scPic = data.artwork_url;
 		  var scArtist = data.user.username;
 		  var scTitle = data.title;
-		  var trackId = "/tracks/" + data.Id
+		  var trackId = "/tracks/" + data.Id;
 		  $('.scPicture').attr('src',scPic);
 		  $('.artist').text(scArtist);
 		  $('.songTitle').text(scTitle);
 
-    	var sound = SC.stream("/tracks/159727991", function(sound){
+    	var sound = SC.stream(trackId, function(sound){
       	sound.play();
     	});
 
