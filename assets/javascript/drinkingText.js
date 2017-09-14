@@ -249,8 +249,8 @@ var userList = [];
 var baseIngs = [];
 var suppIngs = [];
 
-var drinkURL = "http://www.thecocktaildb.com/api/json/v1/1/search.php?s=";
-var ingURL = "http://www.thecocktaildb.com/api/json/v1/1/filter.php?i=";
+var drinkURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=";
+var ingURL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=";
 
 var searchCounter = 0;
 
