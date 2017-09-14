@@ -5,6 +5,7 @@
 
 	
 	<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jcanvas/20.1.2/jcanvas.js"></script>
 
 	<link rel="stylesheet" type="text/css" href="./assets/css/reset.css">
@@ -42,6 +43,7 @@
 		
 		<div class='martini-box'>
 			<img src="./assets/media/drink_icon.png" class="martini">
+      
 			<div class='whoosh'>Have a Drink.</div>
 		</div>
 
@@ -51,7 +53,6 @@
 		Background audio by: 
 		<a class="intellaflow" href="https://soundcloud.com/intellaflow" target="_blank">intellaFLOW</a>
 	</div> 
-
 
 
 
@@ -105,8 +106,9 @@
 		<div class="row">
 			<div class="col-lg-9">
 
-				<label class="main-title" >Follow these instructions:</label> <!--10 margin 1 border-->
-				<div class="instructions-list" id="currentStep">
+				<label class="main-title">Follow these instructions:</label> <!--10 margin 1 border-->
+				<div class="instructions-list">
+
 					<div></div>
 				</div>
 
@@ -135,6 +137,7 @@
 					<li>test 4</li>
 					<li>test 5</li>
 					<li>test 6</li>
+					<li>test 7</li>
 					<li>test 7</li> !-->
 				</ul>
 			</div>
@@ -218,19 +221,23 @@
 
 <!--Drinks API-->
 	<script type="text/javascript">
+
 	</script>
 
 <!--Drinks Functions + Logic-->
 	<script type="text/javascript">
+
 	</script>
 
 
 <!--SoundCloud API-->
 	<script type="text/javascript">
+
 	</script>
 
 <!--SoundCloud Functions + Logic-->
 	<script type="text/javascript">
+    
 	</script>
 
 <!--DOM Manipulation + Logic -->
@@ -297,6 +304,7 @@ var currentColor = "";
 //Landing drink button transition to ingredients	
 	$(".martini-box").on('click', function(){
 		$(".credits").fadeOut(850);
+
 		$('.landing-text').fadeOut(850,'linear',function(){
 			$('.head').fadeIn(400);
 			$('.green').animate({left: '0px',},400);
@@ -314,10 +322,13 @@ var finalIngredients = []; //Ask kevin wut the array should b called
 var ingredientsCounter = 0;
 //Dummy code
 var dummyInstructionsArray = ["This is text instructions number 1.","This is text instructions number 2.","This is text instructions number 3.","This is text instructions number 4.","This is text instructions number 5."];
+
+  
 //Array to ingredients list function
 function choicesList(){
 	//Takes input val
 	var typedIngredient = $('input').val();
+
 	//Used to empty page each keypress
 	$('.choices').empty();
 	//For loop to check through ingredients array
@@ -332,14 +343,17 @@ function choicesList(){
 		} //if
 		else if (typedIngredient === ""){
 			$('.ingredients-choices').css('display','none');
+
 		}//else if
 	}//for loop
 }//choicesList
+
 //Ingredients input
 	$('input').on('keyup', function(){
 		//Adds array to DOM
 		choicesList();
 	}); //input onkeyup
+
 	$('.choices').on('click','a', function(){
 		var textVal = $(this).text();
 		var ogIndex = ingredients.indexOf(textVal);
@@ -355,6 +369,7 @@ function choicesList(){
 		//removes text from DOM
 		$(this).parent().remove();
 		console.log(ogIndex);
+
 		//removes text from array
 		ingredients.splice(ogIndex, 1);
 		ingredientsCounter++;
@@ -371,6 +386,7 @@ function choicesList(){
 		var textSide = $(this).parent().text();
 		var dataIndex = $(this).attr('data-index');
 		var intConverter = parseInt(dataIndex);
+
 		//remove from finalIngredients Array
 		var removalIndex = finalIngredients.indexOf(textSide);
 		finalIngredients.splice(removalIndex,1);
@@ -380,20 +396,24 @@ function choicesList(){
 		console.log(textSide);
 		console.log(intConverter);
 		$(this).parent().remove();
+
 		//repeat function to readd dynamically to DOM
 		choicesList();
 		ingredientsCounter--;
 		console.log(ingredientsCounter);
 
+
 		if (ingredientsCounter <= 1){
 			$('.ingredients-confirm').css('display', 'none');
 		}
+
 
 	});
 
 	$('.ingredients-confirm').on('click','.shaker',function(){
 		$('.green').animate({ left: '-300px'},400, function(){
 			$('.blue').animate({ left: '0px'},400)
+
 			//API CALL TO INSTRUCTIONS NEEDS TO BE DONE BEFORE FADEIN
 			executeGo();
 		});//can put callback function after linear
@@ -401,6 +421,7 @@ function choicesList(){
 			$('.instructions-box').fadeIn(400);
 			$('.instructions-mini').fadeIn(400);
 		});
+
 		currentColor = "blue";
 	});
 	//Be able to go back to ingredients, change, hit confirm, then generates new instructions
@@ -409,70 +430,88 @@ function choicesList(){
 		$('.blue').animate({ left: '-300px'},400, function(){
 			$('.purple').animate({ left: '0px'},400)
 			//API CALL TO INSTRUCTIONS NEEDS TO BE DONE BEFORE FADEIN
+
 		});//can put callback function after linear
 		$('.instructions-box').fadeOut(400, function(){
 			$('.cheers-box').fadeIn(400);
 			$('.results-mini').fadeIn(400);
 		});
+
 		currentColor = "purple";
 	})
 
 	//Right side panel functionality
 	$('.ingredients-mini').on('click',function(){
+
 		if (currentColor === "blue"){
 			$('.instructions-box').fadeOut(400, function(){
 				$('.ingredients-box').fadeIn(400);
 			});
+
 			$('.blue').animate({left: '-300px'},400, function(){
 				$('.green').animate({left: '0px',},400);
 			});
 		}
+
 		else if (currentColor === "purple"){
 			$('.cheers-box').fadeOut(400, function(){
 				$('.ingredients-box').fadeIn(400);
 			});
+
 			$('.purple').animate({left: '-300px'},400, function(){
 				$('.green').animate({left: '0px',},400);
 			});
 		}
+
 		currentColor = "green";
 		console.log('Color is now: ' + currentColor);
 	});
 
+
 	$('.instructions-mini').on('click',function(){
+
 		if (currentColor === "green"){
 			$('.ingredients-box').fadeOut(400, function(){
 				$('.instructions-box').fadeIn(400);
 			});
+
 			$('.green').animate({left: '-300px'},400, function(){
 				$('.blue').animate({left: '0px',},400);
 			});
 		}
+
 		else if (currentColor === "purple"){
 			$('.cheers-box').fadeOut(400, function(){
 				$('.instructions-box').fadeIn(400);
 			});
+
 			$('.purple').animate({left: '-300px'},400, function(){
 				$('.blue').animate({left: '0px',},400);
 			});
 		}
+
 		currentColor = "blue";
 		console.log('Color is now: ' + currentColor);
 	});
+
 
 	$('.results-mini').on('click', function(){
 		if (currentColor === "green"){
 			$('.ingredients-box').fadeOut(400, function(){
 				$('.cheers-box').fadeIn(400);
 			});
+
+
 			$('.green').animate({left: '-300px'},400, function(){
 				$('.purple').animate({left: '0px',},400);
 			});
 			}
+
 		else if (currentColor === "blue"){
 			$('.instructions-box').fadeOut(400, function(){
 				$('.cheers-box').fadeIn(400);
 			});
+
 			$('.blue').animate({left: '-300px'},400, function(){
 				$('.purple').animate({left: '0px',},400);
 			});
