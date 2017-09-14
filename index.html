@@ -168,8 +168,6 @@
 				<div class="main-title" id="drinkImg"></div>
 				<div class="main-title">That'll be $500.</div>
 
-				<button onclick="playIt()">Play</button>
-
 			</div>
 		</div>
 	</div>
@@ -178,7 +176,7 @@
 	<!--Cheers Sidebar-->
 	<aside class="sidebar purple" id="container">
 		<div class="ingredients-side">
-			<div class="title">Music:</div>
+			<div class="title">Recommended Music:</div>
 			<div class="sidebox musical-sidebox">
 
 				<div>Artist Cover: 
@@ -248,6 +246,7 @@
 <script src="./assets/javascript/instructions+finalpage.js"></script>
 
 <script type="text/javascript">
+
  var songArray = [
  	'https://soundcloud.com/awfulrecords/ilovemakonnen-vodka-on-the-weekend-feat-pyramid-quince-rich-po-slim-archibald-slim',
 	'https://soundcloud.com/soxich/gin-and-juice-snoop-doggy-dogg',
@@ -278,21 +277,19 @@
 		  var scPic = data.artwork_url;
 		  var scArtist = data.user.username;
 		  var scTitle = data.title;
-		  var trackId = "/tracks/" + data.Id;
+		  var trackId = "/tracks/" + data.id;
 		  $('.scPicture').attr('src',scPic);
 		  $('.artist').text(scArtist);
 		  $('.songTitle').text(scTitle);
 
-    	var sound = SC.stream(trackId, function(sound){
-      	sound.play();
-    	});
+		  var sound = SC.stream("/tracks/159727991", function(sound){
+        sound.play();
+			});
 
-			}
+		 }
 
 		})
 	
-
-
 
 
 setTimeout(function(){
