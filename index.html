@@ -27,9 +27,9 @@
 		<source src="./assets/media/Collins_Loop.mp4" type="video/mp4" autoplay muted loop>
 	</video>
 
-	<!--<audio id="landing-music" autoplay loop>
+	<audio id="landing-music" autoplay loop>
 		<source src="./assets/media/juicebox_320kbps_130bpm.mp3" type="audio/mp3">
-	</audio>-->
+	</audio>
 
 	
 	<div class="landing-text">
@@ -267,7 +267,7 @@
 	var clientId = 'JlZIsxg2hY5WnBgtn3jfS0UYCl0K8DOg';
 
 	$.ajax({
-		url: 'http://api.soundcloud.com/resolve',
+		url: 'https://api.soundcloud.com/resolve',
 		data: {
 		  url: songPicked,
 		  client_id: clientId
