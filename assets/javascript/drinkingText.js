@@ -1,6 +1,7 @@
 console.log('drinkingText Connected');
 var ingredients = [
 	"Vodka",
+	"Tonic water",
 	"Gin",
 	"Light rum",
 	"Brandy",
