@@ -242,51 +242,14 @@
 
 <!--DOM Manipulation + Logic -->
 <script src="https://connect.soundcloud.com/sdk/sdk-3.2.1.js"></script>
-<script src="./assets/javascript/drinkingText.js"></script>
+<script src="./assets/javascript/music.js"></script>
+<script src="./assets/javascript/drinkIngList.js"></script>
 <script src="./assets/javascript/jCanvas.js"></script>
-<script src="./assets/javascript/instructions+finalpage.js"></script>
+<script src="./assets/javascript/searchLogic.js"></script>
 
 <script type="text/javascript">
 
- var songArray = [
- 	'https://soundcloud.com/awfulrecords/ilovemakonnen-vodka-on-the-weekend-feat-pyramid-quince-rich-po-slim-archibald-slim',
-	'https://soundcloud.com/soxich/gin-and-juice-snoop-doggy-dogg',
-	'https://soundcloud.com/alexandra-pride/alexey-lisin-feat-alexandra-pride-when-the-light-is-rum-original-mix',
-	'https://soundcloud.com/rico-dman/brandy-monica-the-boy-is-mine',
-	'https://soundcloud.com/alltrapcity/tequila-remix-trap-sick',
-	'https://soundcloud.com/blookah/dark-rum',
-	'https://soundcloud.com/scotchbonnet/kenny-rogers-the-gambler',
-	'https://soundcloud.com/caribbeansoundplus-1/beenie-man-im-okay-drinking',
-	'https://soundcloud.com/gallant/bourbon'];
 
-	var random = Math.floor(Math.random()*9);
-	var songPicked = songArray[random];
-	console.log(songArray[random])
-
-	var appVersion = '1505226596';
-	var clientId = 'JlZIsxg2hY5WnBgtn3jfS0UYCl0K8DOg';
-
-	$.ajax({
-		url: 'https://api.soundcloud.com/resolve',
-		data: {
-		  url: songPicked,
-		  client_id: clientId
-		},
-		success: function(data) {
-		  // debugger;
-		  console.log(data)
-		  var scPic = data.artwork_url;
-		  var scArtist = data.user.username;
-		  var scTitle = data.title;
-		  var trackId = "/tracks/" + data.id;
-		  $('.scPicture').attr('src',scPic);
-		  $('.artist').text(scArtist);
-		  $('.songTitle').text(scTitle);
-
-		 }
-
-		})
-	
 
 
 setTimeout(function(){
@@ -426,22 +389,26 @@ function choicesList(){
 	});
 
 	$('.ingredients-confirm').on('click','.shaker',function(){
+		$("#insList").empty();
+    	$('.instructions-list').empty();
+    	$("#mesList").empty();
+    	$("#drinkImg").empty();
 		$('.green').animate({ left: '-300px'},400, function(){
 			$('.blue').animate({ left: '0px'},400)
 
 			//API CALL TO INSTRUCTIONS NEEDS TO BE DONE BEFORE FADEIN
-			executeGo();
+			goShaker();
 		});//can put callback function after linear
 		$('.ingredients-box').fadeOut(400, function(){
 			$('.instructions-box').fadeIn(400);
 			$('.instructions-mini').fadeIn(400);
 		});
-
 		currentColor = "blue";
 	});
 	//Be able to go back to ingredients, change, hit confirm, then generates new instructions
 	$('.instructions-list').text(dummyInstructionsArray[0]);//delete when finished
 	$('.receipt').on('click',function(){
+		resetSearch();
 		$('.blue').animate({ left: '-300px'},400, function(){
 			$('.purple').animate({ left: '0px'},400)
 			//API CALL TO INSTRUCTIONS NEEDS TO BE DONE BEFORE FADEIN

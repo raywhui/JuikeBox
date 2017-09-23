@@ -294,7 +294,6 @@ function executeGo() {
 var baseDrinks = [];
 var suppDrinks = [];
 var sharedDrinks = [];
-var suppDrinksPopped = false;
 var necessaryIngs = [];
 var eligibleDrinks = [];
 var drinkAssigned = false;
@@ -611,6 +610,20 @@ function checkImage(response) {
 	} else {console.log("no thumb");}
 }
 
+function clearIngredients() {
+	var userList = [];
+	var baseIngs = [];
+	var suppIngs = [];
+	var searchCounter = 0;
+	var baseDrinks = [];
+	var suppDrinks = [];
+	var sharedDrinks = [];
+	var necessaryIngs = [];
+	var eligibleDrinks = [];
+	var drinkAssigned = false;
+	$('.side-list').empty();
+}
+
 function getRecipe(finalDrink) {
 	$.ajax({
     url: drinkURL + finalDrink,
@@ -621,5 +634,6 @@ function getRecipe(finalDrink) {
     console.log(combinedPairs);
     console.log("eyyeyey");
     checkImage(response);
+    clearIngredients();
   })
 }

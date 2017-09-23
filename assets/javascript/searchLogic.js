@@ -1,262 +1,95 @@
-var baseList = ["Vodka",
-	"Gin",
-	"Light rum",
-	"Brandy",
-	"Tequila",
-	"Dark rum",
-	"Scotch",
-	"Rum",
-	"Bourbon",];
+var drinkURL = "http://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=";
+var ingURL = "http://www.thecocktaildb.com/api/json/v1/2345/filter.php?i=";
 
-var userList = [];
-var baseIngs = [];
-var suppIngs = [];
-
-var drinkURL = "http://www.thecocktaildb.com/api/json/v1/1/search.php?s=";
-var ingURL = "http://www.thecocktaildb.com/api/json/v1/1/filter.php?i=";
-
-var searchCounter = 0;
-
-function addIng(textVal) {
-	userList.push(textVal);
-	suppIngs.push(textVal);
-	var isBase = baseList.includes(textVal);
-	if (isBase) {baseIngs.push(textVal);}
-	console.log(userList, suppIngs, baseIngs);
-}
-
-function removeIng(textSide) {
-	console.log(userList, suppIngs, baseIngs);
-	var index = baseIngs.indexOf(textSide);
-	if (index > -1) {
-		baseIngs.splice(index, 1);
-	}
-	var index = suppIngs.indexOf(textSide);
-	if (index > -1) {
-		suppIngs.splice(index, 1);
-	}
-	var index = userList.indexOf(textSide);
-	if (index > -1) {
-		userList.splice(index, 1);
-	}
-	console.log(userList, suppIngs, baseIngs);
-}
-
-function needIngredients() {
-	console.log("NEED MORE INGREDIENTS!");
-}
-
-function needLiqour() {
-	console.log("NEED MORE LIQOUR!");
-}
-
-function executeGo() {
-	resetIndexArrays();
-	totalIngCheck();
-}
-
-function resetIndexArrays() {
-	console.log(userList);
-	for (var i = 0; i < userList.length; i++) {
-		console.log("before: " + ingredients);
-		var userListIng = userList[i];
-		console.log(userListIng);
-		ingredients.unshift(userListIng);
-		console.log("after: " + ingredients)
-	}
-	console.log(finalIngredients);
-	finalIngredients = [];
-	console.log("after: " + finalIngredients);
-}
-
-var baseDrinks = [];
-var suppDrinks = [];
-var sharedDrinks = [];
-var suppDrinksPopped = false;
+var ingList = [];
+var totalDrinksList = [];
+var dupeDrinksList = [];
 var necessaryIngs = [];
 var eligibleDrinks = [];
-var drinkAssigned = false;
 
-function totalBaseIngCheck() {
-	if (baseIngs.length < 1) {
-		needLiqour();
-	} else {
-		beginSearchCycle();
-	}
+var needIngs = "No combination of your ingredients can make a legit drink. Go get more ingredients, particularly things made from alcohol. Then go back and add them on the ingredients tab.";
+
+function addIng(textVal) {
+	ingList.push(textVal);
+	$("#ing-list").append("<p>" + textVal + "</p>"); // FOR FAKE DOM!!!
+	console.log(ingList);
+	$.ajax({
+		url: ingURL + textVal,
+		method: "GET"
+	}).done(function(response) {
+		for (var i = 0; i < response.drinks.length; i++) {
+            var drinkListed = response.drinks[i].idDrink;
+            totalDrinksList.push(drinkListed);
+            console.log(totalDrinksList);
+          }
+	})
 }
 
-function totalIngCheck() {
-	if (userList.length < 2) {
-		needIngredients();
-	} else {
-		totalBaseIngCheck();
-	}
+function goShaker() {
+	popDupes();
+	if (dupeDrinksList.length > 0) {
+		executeSearch();
+	} else {printError();}
 }
 
-function beginSearchCycle() {
-	if (!drinkAssigned) {
-		if (searchCounter == 0) {
-				console.log("SEARCHCOUNTER: " + searchCounter);
-				assignTargetBase();
-				searchCounter++;
-		} else if (userList.length > 1) {
-				console.log("SEARCHCOUNTER: " + searchCounter);
-				searchCounter++;
-				suppIngCheck();
-		} else {
-				needIngredients();
+function printError() {
+	$('.instructions-list').text(needIngs);
+}
+
+function popDupes() {
+	for (var i = 0; i < totalDrinksList.length; i++) {
+		var targetDrink = totalDrinksList[i];
+		var firstIndex = totalDrinksList.indexOf(targetDrink);
+		var lastIndex = totalDrinksList.lastIndexOf(targetDrink);
+		var checkDupes = dupeDrinksList.includes(targetDrink);
+		if (!checkDupes && firstIndex !== lastIndex) {
+			dupeDrinksList.push(targetDrink);
+			console.log(dupeDrinksList);
 		}
 	}
 }
 
-function suppIngCheck() {
-	suppDrinks = [];
-	sharedDrinks = [];
-	console.log("new suppIngCheck")
-	if (suppIngs.length > 0) {
-		assignTargetSupp();
-	} else if (baseIngs.length > 0) {
-		console.log("assigning new targetBase");
-	 	assignTargetBase();
-	} else {
-		console.log("all ings searched; no matches")
+function executeSearch() {
+	combinedPairs = [];
+	eligibleDrinks = [];
+	totalnumber = dupeDrinksList.length;
+	counter   = { t: 0 };
+	for (exe = 0; exe < dupeDrinksList.length; exe++) {
+		var targetDrink = dupeDrinksList[exe];
+		checkForIngs(targetDrink);
 	}
 }
 
-function assignTargetBase() {
-	baseDrinks = [];
-	if (searchCounter > 0) {
-		var index = userList.indexOf(targetBase);
-	  	if (index > -1) {
-	    	userList.splice(index, 1);
-	    }
-	}
-	if (userList.length > 1) {
-		suppIngs = userList.slice();
-		console.log("suppIngs before targetBase: " + suppIngs);
-		console.log("baseIngs before targetBase: " + baseIngs);
-		if (baseIngs.length > 0) {
-			var r = Math.floor((Math.random() * baseIngs.length) + 1) - 1;
-			targetBase = baseIngs[r];
-			var index = baseIngs.indexOf(targetBase);
-		  	if (index > -1) {
-		    	baseIngs.splice(index, 1);
-		    }
-		    var index = suppIngs.indexOf(targetBase);
-		  	if (index > -1) {
-		    	suppIngs.splice(index, 1);
-		    }		    
-	    	suppDrinks = [];
-			sharedDrinks = [];
-		    console.log("baseIngs after targetBase: " + baseIngs);
-		    console.log("targetBase: " + targetBase);
-		    console.log("suppIngs after targetBase: " + suppIngs);
-		    popBaseDrinks();
-		}
-	} else {
-		console.log("userList is less than 2");
-	}
-}
 
-function popBaseDrinks() {
-	$.ajax({
-		url: ingURL + targetBase,
-		method: "GET"
-	}).done(function(response) {
-		for (var i = 0; i < response.drinks.length; i++) {
-            var drinkListed = response.drinks[i].strDrink;
-            baseDrinks.push(drinkListed);
-          }
-	}).done(function() {
-		assignTargetSupp();
-	})
-}
-
-function assignTargetSupp() {
-	console.log("on assignTargetSupp: " + suppIngs);
-	var r = Math.floor((Math.random() * suppIngs.length) + 1) - 1;
-	targetSupp = suppIngs[r];
-	var index = suppIngs.indexOf(targetSupp);
-  	if (index > -1) {
-    	suppIngs.splice(index, 1);
-    	console.log("suppIng: " + suppIngs, " targetSupp: " + targetSupp);
-	}
-	popSuppDrinks();	
-}
-
-function popSuppDrinks() {
-	$.ajax({
-		url: ingURL + targetSupp,
-		method: "GET"
-	}).done(function(response) {
-		for (var i = 0; i < response.drinks.length; i++) {
-            var drinkListed = response.drinks[i].strDrink;
-            suppDrinks.push(drinkListed);
-          }
-	}).done(function() {
-		console.log("baseDrinks: " + baseDrinks);
-		console.log("suppDrinks: " + suppDrinks);
-		createSharedDrinks();
-	}).done(function() {
-		checkSharedDrinks();
-	}).done(function() {
-		setTimeout(beginSearchCycle, 2000)
-	})
-} 
-
-
-function createSharedDrinks() {
-	for (var i = 0; i < baseDrinks.length; i++) {
-	    var isMatch = suppDrinks.includes(baseDrinks[i]);
-	    if (isMatch) {
-	      sharedDrinks.push(baseDrinks[i]);
-	    } 
-	}
-}
-
-function checkSharedDrinks() {
-	if (sharedDrinks.length > 0) {
-		for (var i = 0; i < sharedDrinks.length; i++) {
-			drink = sharedDrinks[i];
-			checkDrink(drink);
-		}		
-	} else {
-		suppIngCheck();
-	}
+function after() {
+	console.log('all calls completed. eligible drinks: ' + eligibleDrinks);
+	if (eligibleDrinks.length > 0) {
+		assignDrink();
+	} else {printError();}
 }
 
 function assignDrink() {
-	eligibleDrinks.push(drink);
-	drinkAssigned = true;
-	console.log(drinkAssigned, eligibleDrinks);
-	successDrink();
-}
-
-function successDrink() {
-	if (eligibleDrinks.length > 0) {
-		var r = Math.floor((Math.random() * eligibleDrinks.length) + 1) - 1;
+	var r = Math.floor((Math.random() * eligibleDrinks.length) + 1) - 1;
 		finalDrink = eligibleDrinks[r];
 		console.log("SUCCESS! we will make a: " + finalDrink);
 		$("#drinkName").append(finalDrink);
 		getRecipe(finalDrink);
-	} else {
-		console.log("successDrink: no eligible drinks!!!");
-		$("#drinkName").append("No Eligible Drink :[");
-	}
 }
 
-function haveIngs() {
+
+function haveIngs(targetDrink) {
 	var counter = 0;
 	var matched = 0; 
 	for (var i = 0; i < necessaryIngs.length; i++) {
 		counter++;
-	    var isMatch = userList.includes(necessaryIngs[i]);
+	    var isMatch = ingList.includes(necessaryIngs[i]);
 	    if (isMatch) {
 	    	matched++;
 	      console.log("counter: " + counter + " " + necessaryIngs[i] + " found", " " + matched);
 	    } else {console.log("counter: " + counter + " " + necessaryIngs[i] + " not found");}
 	    if (matched == necessaryIngs.length) {
-	    	assignDrink();
+	    	eligibleDrinks.push(targetDrink);
+	    	console.log(eligibleDrinks);
 	    	necessaryIngs = [];
 	    	console.log("we have all ings necessary");
 	    } else if (counter == necessaryIngs.length) {
@@ -266,12 +99,10 @@ function haveIngs() {
 	}
 }
 
-function checkDrink(drink) {
-		$.ajax({
-			url: drinkURL + drink,
-			method: "GET"
-		}).done(function(response) {
-				console.log(response);
+function checkForIngs(targetDrink) {
+		var url = drinkURL + targetDrink;
+		$.get(url, function(response) {
+			console.log(response);
 				if (typeof response.drinks[0].strIngredient1 === 'string' && response.drinks[0].strIngredient1.length > 0) {
 					necessaryIngs.push(response.drinks[0].strIngredient1);
 				}
@@ -302,8 +133,34 @@ function checkDrink(drink) {
 				if (typeof response.drinks[0].strIngredient10 === 'string' && response.drinks[0].strIngredient10.length > 0) {
 					necessaryIngs.push(response.drinks[0].strIngredient10);
 				} 
-				haveIngs();
-			})
+				haveIngs(targetDrink);
+		}).done(function( html ) {
+		    counter.t++;
+		    if (counter.t == totalnumber) {
+		         after();
+		    }
+  });		
+}
+
+
+function removeIng(textSide) {
+	var index = ingList.indexOf(textSide);
+	if (index > -1) {
+		ingList.splice(index, 1);
+	}
+	$.ajax({
+		url: ingURL + textSide,
+		method: "GET"
+	}).done(function(response) {
+		for (var i = 0; i < response.drinks.length; i++) {
+            var drinkListed = response.drinks[i].idDrink;
+            var index = totalDrinksList.indexOf(drinkListed);
+			if (index > -1) {
+				totalDrinksList.splice(index, 1);
+			}
+            console.log(totalDrinksList);
+          }
+	})
 }
 
 var combinedPairs = [];
@@ -391,6 +248,7 @@ function checkImage(response) {
 	} else {console.log("no thumb");}
 }
 
+
 function getRecipe(finalDrink) {
 	$.ajax({
     url: drinkURL + finalDrink,
@@ -404,9 +262,22 @@ function getRecipe(finalDrink) {
     console.log(combinedPairs);
     //appends measurements to sidebar
     $("#mesList").append(combinedPairs.join(", "));
-    console.log("eyyeyey");
     checkImage(response);
-    clearIngredients();
   })
 
+}
+
+function resetSearch() {
+	ingList = [];
+	totalDrinksList = [];
+	dupeDrinksList = [];
+	eligibleDrinks = [];
+	finalIngredients = [];
+	ingredientsCounter = 0;
+	ingredients = [];
+	for (var i = 0; i < ingRefresh.length; i++) {
+		ingredients.push(ingRefresh[i])
+	}
+	$('.instructions-list').empty();
+	$('.side-list').empty();
 }

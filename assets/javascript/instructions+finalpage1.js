@@ -12,10 +12,11 @@ var userList = [];
 var baseIngs = [];
 var suppIngs = [];
 
-var drinkURL = "http://www.thecocktaildb.com/api/json/v1/1/search.php?s=";
-var ingURL = "http://www.thecocktaildb.com/api/json/v1/1/filter.php?i=";
+var drinkURL = "http://www.thecocktaildb.com/api/json/v1/2345/search.php?s=";
+var ingURL = "http://www.thecocktaildb.com/api/json/v1/2345/filter.php?i=";
 
 var searchCounter = 0;
+var textVal;
 
 function addIng(textVal) {
 	userList.push(textVal);
@@ -389,6 +390,31 @@ function checkImage(response) {
 		var img = '<img src="' + response.drinks[0].strDrinkThumb + '">';
 		$("#drinkImg").append(img);
 	} else {console.log("no thumb");}
+}
+
+function clearIngredients() {
+	userList = [];
+	baseIngs = [];
+	suppIngs = [];
+	searchCounter = 0;
+	baseDrinks = [];
+	suppDrinks = [];
+	sharedDrinks = [];
+	necessaryIngs = [];
+	eligibleDrinks = [];
+	drinkAssigned = false;
+	$('.side-list').empty();
+	console.log("userList: " + userList);
+	console.log("baseIngs: " + baseIngs);
+	console.log("suppIngs: " + suppIngs);
+	console.log("baseDrinks: " + baseDrinks);
+	console.log("suppDrinks: " + suppDrinks);
+	console.log("sharedDrinks: " + sharedDrinks);
+	console.log("necessaryIngs: " + necessaryIngs);
+	console.log("eligibleDrinks: " + eligibleDrinks);
+	console.log("textVal: " + textVal);
+	console.log("finalIngredients: " + finalIngredients);
+	console.log("ingredientsCounter: " + ingredientsCounter);
 }
 
 function getRecipe(finalDrink) {
