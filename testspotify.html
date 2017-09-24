@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div class='album'><img src='' class='album_cover'></div>
+	<div class='artist'></div>
+	<iframe src="https://open.spotify.com/embed?uri=" width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
+
+	<script
+	src="https://code.jquery.com/jquery-3.2.1.js"></script>
+
+	<script type="text/javascript">
+
+
+		var url = $.param({
+			a:1,
+			b:2,
+			limit:3
+		})
+
+		console.log(url)
+		
+		$.ajax({
+			method: "GET",
+			url: "https://api.spotify.com/v1/search?q=vodka&type=track,artist&market=US&limit=3",
+			headers: { //OAuth Access Token REMOVE LATER
+				'Authorization': 'Bearer BQAk6PAHvtiroT1hdqal36oHoEVoqStn1hFCS-pgZbIQHdh0GeBRgsWQcKrwBJHUFIq7SINdLH4lUtTWlzMydXpDS1pGIdmBxpzAd8EXiwAPwtpbOtuXsXajwWAgN_rf_8l2GBvF46o'
+			}
+
+		}).done(function(response){
+
+			console.log(response);
+			console.log(response.tracks.items[0])
+
+			var anberlin = response.tracks.items[0];
+			var albumCover = anberlin.album.images[0].url;
+			var songUri = anberlin.uri;
+			var uri = 'https://open.spotify.com/embed?uri=' + songUri; 
+			console.log(uri)
+
+			$('.album_cover').attr('src', albumCover);
+			$('iframe').attr('src', uri);
+
+		})
+		//Spotify has no streaming integration with HTML5, Spotify Play Button Required
+		//Will only play 30 sec if the user does not have Spotify open and logged in on their computer. Full song will be available once those conditions are met.
+		//Spotify API does function and will push URI into src of the Spotify Play Button
+
+	</script>
+</body>
+</html>

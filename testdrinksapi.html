@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>testDrinkApi</title>
+</head>
+<body>
+	<div class='title'></div>
+	<div class='pix'></div>
+	<div class='instructions'></div>
+	<button class='first-ing'>First Ingredient Press</button> <button class='confirm'>Confirm</button>
+
+
+
+
+
+
+	<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+	<script type="text/javascript">
+
+		var ingFilter = "http://www.thecocktaildb.com/api/json/v1/1/filter.php?i=";
+		var idSearch = "http://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=";
+
+		var ajaxDrinksIng = [];
+
+		var baseDrink = 'Coca-Cola';
+
+		var inputIng = ["Gin", "Light rum", "Tequila", "Vodka", "Coca-Cola", "Sweet and sour", "Bitters", "Lemon", "Lemon Juice","Angostura Bitters","Sweet Vermouth","Orange Juice"];
+
+		console.log('Inputed Ingredients:', inputIng);
+
+	//first ingredient needs to be the "base" drink for id purposes. Checks to see if other 
+
+	var ajaxIdArray = []; //stores ingredients filter array;
+	var testId = "";
+	var searchIndex = 0;
+	var searchIndex2 = 10;
+//First ingredient click will run first AJAX call to populate ajaxIdArray with ID's
+function ajaxIdSearch(){
+	$.ajax({
+		method:'GET',
+		url: ingFilter+baseDrink,
+		success: function(response){
+			//for loop first 10 in case of performance issues performance
+			var drink = response.drinks;
+			// console.log(drink[0].idDrink);
+
+			for (i = 0; i < drink.length; i++){
+				ajaxIdArray.push(drink[i].idDrink);
+			}
+			console.log('Ajax Called IDs:', ajaxIdArray);
+			// testId = ajaxIdArray[0]; 
+			// console.log('testId:', testId);
+		}
+	//Submit button will run 2nd AJAX call to compare inputArray with ajaxDrinksIng.
+	//Callback function for 2nd AJAX call
+	});
+};//ajaxIdSearch
+
+	// for (var j=0; j < ajaxIdArray.length; j++){
+	// 	console.log('This is ID #', j)
+function ajaxRecipeSearch(){
+	
+	// 	return;
+	$.ajax({
+		method:'GET',
+		url: idSearch+ajaxIdArray[searchIndex],
+		//Run when successful ajax call
+		success: function(response){
+			var drink = response.drinks[0];
+			console.log(drink.strDrink);
+
+			//for loop is not possible for sequential numbers in dot notation. Must be done individually.
+			//Ingredient 1 guranteed to have ingredient.
+			//If any ingredients are blank, will return and ends ajax IMMEDIATELY.
+
+			//Ingredient 1
+			console.log('Adding: '+ drink.strIngredient1);
+			ajaxDrinksIng.push(drink.strIngredient1);
+			console.log(ajaxDrinksIng);
+
+			//Ingredient 2
+			if (drink.strIngredient2 === ""){
+				console.log('runs anyways2');
+				return;
+			}else{
+				console.log('Adding: '+ drink.strIngredient2);
+				ajaxDrinksIng.push(drink.strIngredient2);
+				console.log(ajaxDrinksIng);
+			};
+
+			//Ingredient 3
+			if (drink.strIngredient3 === ""){
+				console.log('runs anyways3')
+				return;
+			}else{
+				console.log('Adding: '+ drink.strIngredient3);
+				ajaxDrinksIng.push(drink.strIngredient3);
+				console.log(ajaxDrinksIng);
+			};
+
+			//Ingredient 4
+			if (drink.strIngredient4 === ""){
+				return;
+			}else{
+				console.log('Adding: '+ drink.strIngredient4);
+				ajaxDrinksIng.push(drink.strIngredient4);
+				console.log(ajaxDrinksIng);
+			};
+
+			//Ingredient 5
+			if (drink.strIngredient5 === ""){
+				return;
+			}else{
+				console.log('Adding: '+ drink.strIngredient5);
+				ajaxDrinksIng.push(drink.strIngredient5);
+				console.log(ajaxDrinksIng);
+			};
+
+			//Ingredient 6
+			if (drink.strIngredient6 === ""){
+				return;
+			}else{
+				console.log('Adding: '+ drink.strIngredient6);
+				ajaxDrinksIng.push(drink.strIngredient6);
+				console.log(ajaxDrinksIng);			
+			};
+
+			//Ingredient 7
+			if (drink.strIngredient7 === ""){
+				return;
+			}else{
+				console.log('Adding: '+ drink.strIngredient7);
+				ajaxDrinksIng.push(drink.strIngredient7);
+				console.log(ajaxDrinksIng);
+			};
+
+			//Ingredient 8
+			if (drink.strIngredient8 === ""){
+				return;
+			}else{
+				console.log('Adding: '+ drink.strIngredient8);
+				ajaxDrinksIng.push(drink.strIngredient8);
+				console.log(ajaxDrinksIng);
+			};
+
+			//Ingredient 9
+			if (drink.strIngredient9 === ""){
+				return;
+			}else{
+				console.log('Adding: '+ drink.strIngredient9);
+				ajaxDrinksIng.push(drink.strIngredient9);
+				console.log(ajaxDrinksIng);
+			};
+
+			//Ingredient 10
+			if (drink.strIngredient10 === ""){
+				return;
+			}else{
+				console.log('Adding: '+ drink.strIngredient10);
+				ajaxDrinksIng.push(drink.strIngredient10);
+				console.log(ajaxDrinksIng);
+			};
+
+			//Ingredient 11
+			if (drink.strIngredient11 === ""){
+				return;
+			}else{
+				console.log('Adding: '+ drink.strIngredient11);
+				ajaxDrinksIng.push(drink.strIngredient11);
+				console.log(ajaxDrinksIng);
+			};
+
+			//Ingredient 12
+			if (drink.strIngredient12 === ""){
+				return;
+			}else{		
+				console.log('Adding: '+ drink.strIngredient12);
+				ajaxDrinksIng.push(drink.strIngredient12);
+				console.log(ajaxDrinksIng);
+			};
+
+			//Ingredient 13
+			if (drink.strIngredient13 === ""){
+				return;
+			}else{
+				console.log('Adding: '+ drink.strIngredient13);
+				ajaxDrinksIng.push(drink.strIngredient13);
+				console.log(ajaxDrinksIng);
+			};
+
+			//Ingredient 14
+			if (drink.strIngredient14 === ""){
+				return;
+			}else{
+				console.log('Adding: '+ drink.strIngredient14);
+				ajaxDrinksIng.push(drink.strIngredient14);
+				console.log(ajaxDrinksIng);
+			};
+
+			//Ingredient 15
+			if (drink.strIngredient15 === ""){
+				return;
+			}else{
+				console.log('Adding: '+ drink.strIngredient15);
+				ajaxDrinksIng.push(drink.strIngredient15);
+				console.log(ajaxDrinksIng);
+			};
+		}//success
+
+	//function to run after ajax call
+	}).always(function(response){
+		//Checks if inputIng matches ajaxDrinksIng.
+		var trueCounter = 0;
+		for (var i = 0; i < inputIng.length; i++) {
+			if (ajaxDrinksIng.includes(inputIng[i]) === true){
+				console.log('Included in Drink Ingredients:', inputIng[i]);
+				trueCounter++;
+			}else{
+				console.log('Not Included in Drink Ingredients:', inputIng[i]);
+			};
+		};//for
+
+		if (trueCounter === ajaxDrinksIng.length){
+			console.log("It's a match!");
+			$('.title').append(response.drinks[0].strDrink);
+			$('.pix').html('<img src="' + response.drinks[0].strDrinkThumb + '" width="250px">');
+			$('.instructions').append(response.drinks[0].strInstructions);
+		}else if (trueCounter <= ajaxDrinksIng.length){
+			ajaxDrinksIng = [];
+			searchIndex++;
+			testId = ajaxIdArray[searchIndex];
+			ajaxRecipeSearch();
+			console.log('do it for:', searchIndex);
+		}
+	});//.always
+};//function
+
+// if (drinkFound === true){
+// 	endLoop();	
+// }
+
+// };//for loop j
+
+//For loop through IDs
+// ajaxLoop(); 
+
+	// console.log(check_array(testFinalIng, testFinalIng2));
+
+//CLICK EVENT ON FIRST INGREDIENT!!!
+$('.first-ing').on('click',function(){
+	ajaxIdSearch();
+});
+
+
+//CONFIRM BUTTON EVENT
+$('.confirm').on('click',function(){
+	ajaxRecipeSearch();
+});
+
+
+
+
+
+</script>
+</body>
+</html>

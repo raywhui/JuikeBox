@@ -19,118 +19,164 @@
 </head>
 
 <body>
-
+<!-- 	
 	<canvas class='group-logo' width="600px" height="600px"></canvas>
 	
 
-	<video class="background" autoplay muted loop>
+	<video class="background" muted loop>
 		<source src="./assets/media/Collins_Loop.mp4" type="video/mp4" autoplay muted loop>
-	</video>
+		</video>
 
-	<audio id="landing-music" autoplay loop>
-		<source src="./assets/media/juicebox_320kbps_130bpm.mp3" type="audio/mp3">
-	</audio>
+		<audio id="landing-music" loop>
+			<source src="./assets/media/juicebox_320kbps_130bpm.mp3" type="audio/mp3">
+			</audio>
 
-	
-	<div class="landing-text">
-		<h1 class="logo text">
-			<span class='juikebox'>JuikeB<img class='audio-control play' src='./assets/media/play.png'>x</span>
-		</h1>
-		<h3 class="slogan text">
-			<span>The Night.</span><span> Remixed.</span>
-		</h3><br>
-		<p class="landing-instructions text">* The modern app to help you become your own bartender while setting the mood with the latest music trends. *</p><br>
 		
-		<div class='martini-box'>
-			<img src="./assets/media/drink_icon.png" class="martini">
-      
-			<div class='whoosh'>Have a Drink.</div>
-		</div>
-
-	</div>
-
-	<div class='credits'>
-		Background audio by: 
-		<a class="intellaflow" href="https://soundcloud.com/intellaflow" target="_blank">intellaFLOW</a>
-	</div> 
-
-
-
-
-<!--Top bar-->
-	<header class="container-fluid head">
-		<div class="row">
-			<div class="col-lg-offset-2 col-lg-5">
-				<h1 class="top-logo juikebox">JuikeB<img class='audio-control play' src='./assets/media/play.png'>x</h1>
-			</div>
-			<div class="col-lg-offset-3 col-lg-2">
-<!--				<canvas class='group-logo smaller-logo' width="236px" height="149px"></canvas> -->
-			</div>
-		</div>
-	</header>
-
-<!-- Ingredients UI -->
-	<!--Ingredients Middle Box-->
-	<div class='container-fluid ingredients-box'>
-		<div class="row">
-			<div class="col-lg-9">
-				<label class="main-title">Type in your ingredients:</label>
-				<input type="text" class="form-control" id="ingredients-input" placeholder="Minimum 2 Ingredients">
-				<div class='ingredients-choices'>
-					<ul class='choices'></ul>
+			<div class="landing-text">
+				<h1 class="logo text">
+					<span class='juikebox'>JuikeB<img class='audio-control play' src='./assets/media/play.png'>x</span>
+				</h1>
+				<h3 class="slogan text">
+					<span>The Night.</span><span> Remixed.</span>
+				</h3><br>
+				<p class="landing-instructions text">* The modern app to help you become your own bartender while setting the mood with the latest music trends. *</p><br>
+				
+				<div class='martini-box'>
+					<img src="./assets/media/drink_icon.png" class="martini">
+					
+					<div class='whoosh'>Have a Drink.</div>
 				</div>
 
 			</div>
-		</div>
-	</div>
 
+			<div class='credits'>
+				Background audio by: 
+				<a class="intellaflow" href="https://soundcloud.com/intellaflow" target="_blank">intellaFLOW</a>
+			</div> 
 
-	<!--Ingredients Sidebar-->
-	<aside class="sidebar green" id="container">
-		<div class="ingredients-side">
-			<div class="title">Ingredients:</div>
-			<div class="sidebox">
-				<ul class='side-list'></ul>
-			</div>
-			<div class="ingredients-confirm">
-				<img src="./assets/media/cocktail_shaker.png" class="shaker">
-				<span class="shaker-text">Mix it Up.</span>
-			</div>
-		</div>
-	</aside>
+ -->
 
-
-<!-- Instructions UI-->
-	<!--Instructions Middle Box-->
-	<div class='container-fluid instructions-box'>
-		<div class="row">
-			<div class="col-lg-9">
-
-				<label class="main-title">Follow these instructions:</label> <!--10 margin 1 border-->
-				<div class="instructions-list">
-
-					<div></div>
+			<!--Top bar-->
+			<header class="container-fluid head">
+				<div class="row">
+					<div class="col-lg-offset-2 col-lg-4">
+						<h1 class="top-logo juikebox">JuikeB<img class='audio-control play' src='./assets/media/play.png'>x</h1>
+					</div>
+					<div class="col-lg-offset-3 col-lg-3">
+						<div class='random-centered random-title'> Too Drunk to Pick?
+							<button class="random random-centered button main-title">Surprise Me</button>
+						</div>
+					</div>
 				</div>
+			</header>
 
-				<!--Replace later-->
-				<!--<button class="random button main-title">Next Step.</button>-->
-				<div class='receipt'>
+			<!--Bottom bar-->
+			<footer class="container-fluid foot">
+				<div class="row">
+					<div class="col-lg-offset-2 col-lg-2">
+						<div class="copyright">
+							&copy CHKR Devs
+						</div>
+					</div>
+					<div class="col-lg-offset-5 col-lg-3">
+						<div class="footer-icon-holder">
+							<!-- VIP text will change into About, Meet the Founders, and BackRoom -->
+							<span class="above-icons-title">VIP</span>
+							<img class="footer-icons" src="./assets/media/about.png">
+							<!-- <span>About</span> 	 -->
+							<img class="footer-icons" src="./assets/media/meet.png">
+							<!-- <span>Meet the Founders</span>  -->
+							<img class="footer-icons" src="./assets/media/door.png">
+							<!-- <span>Backroom</span> -->
+						</div>
+					</div>
+				</div>
+			</footer>
 
-					<!--DISPLAY NONE, THEN FADE IN ONCE LAST STEP APPEARS-->
-					<img src='./assets/media/receipt_icon.png' class='receipt'>
-					<div class='close-tab'>Close your bar tab.</div>
+
+			<!-- Ingredients UI -->
+			<!--Ingredients Middle Box-->
+			<div class='container-fluid ingredients-box'>
+				<div class="row">
+					<div class="col-lg-9">
+						<label class="main-title">Type in your ingredients:</label>
+						<input type="text" class="form-control" id="ingredients-input" placeholder="Minimum 2 Ingredients">
+						<div class='ingredients-choices'>
+							<ul class='choices'></ul>
+						</div>
+
+					</div>
+					<!--How to Do Section-->
+					<div class="col-lg-3">
+						<div class="howdothis">
+							<p>	Now this is a story all about how my life got flipped turned upside down
+									And I'd like to take a minute, just sit right there
+									I'll tell you how I became the prince of a town called Bel-Air.
+									In West Philadelphia, born and raised
+									On the playground is where I spent most of my days.
+									Chillin' out, maxin', relaxin' all cool
+									And all shootin' some b-ball outside of the school.
+									When a couple of guys who were up to no good,
+									Started makin' trouble in my neighborhood
+									I got in one little fight and my mom got scared
+									And said "You're movin' with your auntie and uncle in Bel-Air. </p>
+
+
+						</div>
+					</div>
+					<!-- Width: 363px Height: 444px -->
+					<!-- Top 263px Right: ???-1740px -->
+
 				</div>
 			</div>
-		</div>
-	</div>
 
 
-	<!--Instructions Sidebar-->
-	<aside class="sidebar blue" id="container">
-		<div class="ingredients-side">
-			<div class="title">Instructions:</div>
-			<div class="sidebox instructions-sidebox">
-				<ul class='instructions-side-list' id="insList">
+			<!--Ingredients Sidebar-->
+			<aside class="sidebar green" id="container">
+				<div class="ingredients-side">
+					<div class="title">Ingredients:</div>
+					<div class="sidebox">
+						<ul class='side-list'></ul>
+					</div>
+					<div class="ingredients-confirm">
+						<img src="./assets/media/cocktail_shaker.png" class="shaker">
+						<span class="shaker-text">Mix it Up.</span>
+					</div>
+				</div>
+			</aside>
+
+
+			<!-- Instructions UI-->
+			<!--Instructions Middle Box-->
+			<div class='container-fluid instructions-box'>
+				<div class="row">
+					<div class="col-lg-9">
+
+						<label class="main-title">Follow these instructions:</label> <!--10 margin 1 border-->
+						<div class="instructions-list">
+
+							<div></div>
+						</div>
+
+						<!--Replace later-->
+						<button class="random button main-title">Next Step.</button>
+						<div class='receipt'>
+
+							<!--DISPLAY NONE, THEN FADE IN ONCE LAST STEP APPEARS-->
+							<img src='./assets/media/receipt_icon.png' class='receipt'>
+							<div class='close-tab'>Close your bar tab.</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<!--Instructions Sidebar-->
+			<aside class="sidebar blue" id="container">
+				<div class="ingredients-side">
+					<div class="title">Instructions:</div>
+					<div class="sidebox instructions-sidebox">
+						<ul class='instructions-side-list' id="insList">
 					<!--<li>This is text instructions number 1.</li>
 					<li>test 2</li>
 					<li>test 3</li>
@@ -142,7 +188,7 @@
 				</ul>
 			</div>
 			<div class ="title measurements">Measurements:</div>
-				<div class="sidebox measurements-sidebox">
+			<div class="sidebox measurements-sidebox">
 				<ul class='measurements-side-list' id="mesList">
 					<!--<li>test 1</li>
 					<li>test 2</li>
@@ -157,7 +203,7 @@
 	</aside>
 
 
-<!--Cheers UI-->
+	<!--Cheers UI-->
 	<!--Cheers Middle Box-->
 	<div class='container-fluid cheers-box'>
 		<div class="row">
@@ -194,7 +240,7 @@
 		</div>
 	</aside>
 
-<!--Right panel Buttons-->
+	<!--Right panel Buttons-->
 	<div class="right-panel">
 		<div class="ingredients-mini right-side">Ingredients</div>
 		<div class="instructions-mini right-side">Instructions</div>
@@ -205,74 +251,74 @@
 
 
 
-<!--Drinks-->
+	<!--Drinks-->
 	<div id="drinks-container">
 		<div id="drink-name"></div>
 		<div id="drink-ingredients"></div>
 		<div id="drink-instructions"></div>
 	</div><!--drinks-container-->
 
-<!--Soundcloud-->
+	<!--Soundcloud-->
 	<div id="soundcloud-container">
 		<div id="track-name"></div>
 		<div id="artist"></div>
 		<div id="track-link"></div>
 	</div><!--soundcloud-container-->
 
-<!--Drinks API-->
+	<!--Drinks API-->
 	<script type="text/javascript">
 
 	</script>
 
-<!--Drinks Functions + Logic-->
+	<!--Drinks Functions + Logic-->
 	<script type="text/javascript">
 
 	</script>
 
 
-<!--SoundCloud API-->
+	<!--SoundCloud API-->
 	<script type="text/javascript">
 
 	</script>
 
-<!--SoundCloud Functions + Logic-->
+	<!--SoundCloud Functions + Logic-->
 	<script type="text/javascript">
-    
+		
 	</script>
 
-<!--DOM Manipulation + Logic -->
-<script src="https://connect.soundcloud.com/sdk/sdk-3.2.1.js"></script>
-<script src="./assets/javascript/drinkingText.js"></script>
-<script src="./assets/javascript/jCanvas.js"></script>
-<script src="./assets/javascript/instructions+finalpage.js"></script>
+	<!--DOM Manipulation + Logic -->
+	<script src="https://connect.soundcloud.com/sdk/sdk-3.2.1.js"></script>
+	<script src="./assets/javascript/drinkingText.js"></script>
+	<script src="./assets/javascript/jCanvas.js"></script>
+	<script src="./assets/javascript/instructions+finalpage.js"></script>
 
-<script type="text/javascript">
+	<script type="text/javascript">
 
- var songArray = [
- 	'https://soundcloud.com/awfulrecords/ilovemakonnen-vodka-on-the-weekend-feat-pyramid-quince-rich-po-slim-archibald-slim',
-	'https://soundcloud.com/soxich/gin-and-juice-snoop-doggy-dogg',
-	'https://soundcloud.com/alexandra-pride/alexey-lisin-feat-alexandra-pride-when-the-light-is-rum-original-mix',
-	'https://soundcloud.com/rico-dman/brandy-monica-the-boy-is-mine',
-	'https://soundcloud.com/alltrapcity/tequila-remix-trap-sick',
-	'https://soundcloud.com/blookah/dark-rum',
-	'https://soundcloud.com/scotchbonnet/kenny-rogers-the-gambler',
-	'https://soundcloud.com/caribbeansoundplus-1/beenie-man-im-okay-drinking',
-	'https://soundcloud.com/gallant/bourbon'];
+		var songArray = [
+		'https://soundcloud.com/awfulrecords/ilovemakonnen-vodka-on-the-weekend-feat-pyramid-quince-rich-po-slim-archibald-slim',
+		'https://soundcloud.com/soxich/gin-and-juice-snoop-doggy-dogg',
+		'https://soundcloud.com/alexandra-pride/alexey-lisin-feat-alexandra-pride-when-the-light-is-rum-original-mix',
+		'https://soundcloud.com/rico-dman/brandy-monica-the-boy-is-mine',
+		'https://soundcloud.com/alltrapcity/tequila-remix-trap-sick',
+		'https://soundcloud.com/blookah/dark-rum',
+		'https://soundcloud.com/scotchbonnet/kenny-rogers-the-gambler',
+		'https://soundcloud.com/caribbeansoundplus-1/beenie-man-im-okay-drinking',
+		'https://soundcloud.com/gallant/bourbon'];
 
-	var random = Math.floor(Math.random()*9);
-	var songPicked = songArray[random];
-	console.log(songArray[random])
+		var random = Math.floor(Math.random()*9);
+		var songPicked = songArray[random];
+		console.log(songArray[random])
 
-	var appVersion = '1505226596';
-	var clientId = 'JlZIsxg2hY5WnBgtn3jfS0UYCl0K8DOg';
+		var appVersion = '1505226596';
+		var clientId = 'JlZIsxg2hY5WnBgtn3jfS0UYCl0K8DOg';
 
-	$.ajax({
-		url: 'https://api.soundcloud.com/resolve',
-		data: {
-		  url: songPicked,
-		  client_id: clientId
-		},
-		success: function(data) {
+		$.ajax({
+			url: 'https://api.soundcloud.com/resolve',
+			data: {
+				url: songPicked,
+				client_id: clientId
+			},
+			success: function(data) {
 		  // debugger;
 		  console.log(data)
 		  var scPic = data.artwork_url;
@@ -283,54 +329,54 @@
 		  $('.artist').text(scArtist);
 		  $('.songTitle').text(scTitle);
 
-		 }
+		}
 
-		})
-	
+	})
+		
 
 
-setTimeout(function(){
-	$('.landing-text').fadeIn(800);
-	$('canvas').fadeOut(800);
-	$('.background').fadeIn(800);
-},2500);
+		setTimeout(function(){
+			$('.landing-text').fadeIn(800);
+			$('canvas').fadeOut(800);
+			$('.background').fadeIn(800);
+		},2500);
 
-var currentColor = "";
+		var currentColor = "";
 
 //Landing music vol
-	var intellaBeats = document.getElementById('landing-music');
-	$("#landing-music").prop('volume',0.1);
+var intellaBeats = document.getElementById('landing-music');
+$("#landing-music").prop('volume',0.1);
 
-	$(".juikebox").on('click', '.play', function(){
-		intellaBeats.pause();
-		$('.audio-control').attr("src","./assets/media/pause.png");
-		$('.audio-control').addClass('pause').removeClass('play');
+$(".juikebox").on('click', '.play', function(){
+	intellaBeats.pause();
+	$('.audio-control').attr("src","./assets/media/pause.png");
+	$('.audio-control').addClass('pause').removeClass('play');
 
-	});
+});
 
-	$(".juikebox").on('click', '.pause', function(){
-		intellaBeats.play();
-		$('.audio-control').attr("src","./assets/media/play.png");
-		$('.audio-control').addClass('play').removeClass('pause');
-	});
+$(".juikebox").on('click', '.pause', function(){
+	intellaBeats.play();
+	$('.audio-control').attr("src","./assets/media/play.png");
+	$('.audio-control').addClass('play').removeClass('pause');
+});
 
 
 
 //Landing drink button transition to ingredients	
-	$(".martini-box").on('click', function(){
-		$(".credits").fadeOut(850);
+$(".martini-box").on('click', function(){
+	$(".credits").fadeOut(850);
 
-		$('.landing-text').fadeOut(850,'linear',function(){
-			$('.head').fadeIn(400);
-			$('.green').animate({left: '0px',},400);
-			$('.ingredients-box').fadeIn(400);
-			$('.ingredients-mini').fadeIn(400);
+	$('.landing-text').fadeOut(850,'linear',function(){
+		$('.head').fadeIn(400);
+		$('.green').animate({left: '0px',},400);
+		$('.ingredients-box').fadeIn(400);
+		$('.ingredients-mini').fadeIn(400);
 			// $('.smaller-logo').fadeIn(400);
 		});
 
-		currentColor = "green";
+	currentColor = "green";
 
-	});
+});
 //INGREDIENTS PAGE FUNCTIONALITY
 //Ingredients array to be pushed to API for random recipe
 var finalIngredients = []; //Ask kevin wut the array should b called
@@ -338,7 +384,7 @@ var ingredientsCounter = 0;
 //Dummy code
 var dummyInstructionsArray = [];
 
-  
+
 //Array to ingredients list function
 function choicesList(){
 	//Takes input val
@@ -351,10 +397,10 @@ function choicesList(){
 		var converter = ingredients[i].toUpperCase();
 		//Removes case sensitivity for easy comparison
 		if (converter.indexOf(typedIngredient.toUpperCase()) != -1 && typedIngredient !== "" && typedIngredient !== " "){
-				$('.ingredients-choices').css('display','block');
-				$('.choices').append(
-					  '<li><a>' + ingredients[i] + '</a></li>'
-					);
+			$('.ingredients-choices').css('display','block');
+			$('.choices').append(
+				'<li><a>' + ingredients[i] + '</a></li>'
+				);
 		} //if
 		else if (typedIngredient === ""){
 			$('.ingredients-choices').css('display','none');
@@ -364,23 +410,24 @@ function choicesList(){
 }//choicesList
 
 //Ingredients input
-	$('input').on('keyup', function(){
+$('input').on('keyup', function(){
 		//Adds array to DOM
 		choicesList();
 	}); //input onkeyup
 
-	$('.choices').on('click','a', function(){
-		var textVal = $(this).text();
-		var ogIndex = ingredients.indexOf(textVal);
-		$('.side-list').append(
-			'<li>' + '<div class="delete" data-index="' + ogIndex + '">' + 
-				'<div class="one"></div><div class="two"></div>'+ 
-				'</div>' + textVal + 
-			'</li>'
+$('.choices').on('click','a', function(){
+	var textVal = $(this).text();
+	var ogIndex = ingredients.indexOf(textVal);
+	$('.side-list').append(
+		'<li>' + '<div class="delete" data-index="' + ogIndex + '">' + 
+		'<div class="one"></div><div class="two"></div>'+ 
+		'</div>' + textVal + 
+		'</li>'
 		);
 		//pushes to finalIngredients Array
 		finalIngredients.push(textVal);
 		addIng(textVal);
+		
 		//removes text from DOM
 		$(this).parent().remove();
 		console.log(ogIndex);
@@ -389,7 +436,7 @@ function choicesList(){
 		ingredients.splice(ogIndex, 1);
 		ingredientsCounter++;
 		console.log(ingredientsCounter);
-
+		$('input').val('');
 
 		if (ingredientsCounter >= 2){
 			console.log('yay');
@@ -397,10 +444,10 @@ function choicesList(){
 		}
 	});//event delegation li a click
 
-	$('.side-list').on('click','.delete', function(){
-		var textSide = $(this).parent().text();
-		var dataIndex = $(this).attr('data-index');
-		var intConverter = parseInt(dataIndex);
+$('.side-list').on('click','.delete', function(){
+	var textSide = $(this).parent().text();
+	var dataIndex = $(this).attr('data-index');
+	var intConverter = parseInt(dataIndex);
 
 		//remove from finalIngredients Array
 		var removalIndex = finalIngredients.indexOf(textSide);
@@ -425,20 +472,20 @@ function choicesList(){
 
 	});
 
-	$('.ingredients-confirm').on('click','.shaker',function(){
-		$('.green').animate({ left: '-300px'},400, function(){
-			$('.blue').animate({ left: '0px'},400)
+$('.ingredients-confirm').on('click','.shaker',function(){
+	$('.green').animate({ left: '-300px'},400, function(){
+		$('.blue').animate({ left: '0px'},400)
 
 			//API CALL TO INSTRUCTIONS NEEDS TO BE DONE BEFORE FADEIN
 			executeGo();
 		});//can put callback function after linear
-		$('.ingredients-box').fadeOut(400, function(){
-			$('.instructions-box').fadeIn(400);
-			$('.instructions-mini').fadeIn(400);
-		});
-
-		currentColor = "blue";
+	$('.ingredients-box').fadeOut(400, function(){
+		$('.instructions-box').fadeIn(400);
+		$('.instructions-mini').fadeIn(400);
 	});
+
+	currentColor = "blue";
+});
 	//Be able to go back to ingredients, change, hit confirm, then generates new instructions
 	$('.instructions-list').text(dummyInstructionsArray[0]);//delete when finished
 	$('.receipt').on('click',function(){
@@ -520,7 +567,7 @@ function choicesList(){
 			$('.green').animate({left: '-300px'},400, function(){
 				$('.purple').animate({left: '0px',},400);
 			});
-			}
+		}
 
 		else if (currentColor === "blue"){
 			$('.instructions-box').fadeOut(400, function(){
@@ -533,7 +580,7 @@ function choicesList(){
 		};
 		currentColor = "purple";
 		console.log('Color is now: ' + currentColor);
-		});
+	});
 
 
 

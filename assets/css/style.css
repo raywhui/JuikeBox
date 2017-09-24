@@ -6,12 +6,14 @@ html{
 
 body{
 	/*Color grey for debug*/
-	background-color: black; 
-	/*background-color: #D3D3D3;*/
+	/*background-color: black; */
+	background-color: #D3D3D3;
   font-family: 'Poppins', sans-serif;
 	color:white;
 }
 
+
+/*Landing Page*/
 video.background{
 	display:none;
 	position: fixed;
@@ -117,6 +119,7 @@ h3 span:nth-child(2){
 	background-color: #5433f7;
 	border: none;
 	padding: 10px 20px;
+	font-family: 'Poppins', sans-serif;
 }
 
 .martini-box{
@@ -155,11 +158,14 @@ h3 span:nth-child(2){
 	outline: none;
 }
 
+
+/*Header*/
 header.head{
 	/*Display none for debug*/
-	display: none;
+	/*display: none;*/
 	background-color: rgba(36,36,36,0.7);
 	height: 150px;
+	width: 100;%
 }
 
 .top-logo{
@@ -172,18 +178,60 @@ header.head{
 .random-centered{
 	text-align: center;
 	display:block;
-	margin:0 auto;
+	margin: 19px auto;
 }
 
 .random-title{
+	font-family: 'Permanent Marker', cursive;
 	font-size: 15pt;
-
+	margin-right: 92px;
+	float:right;
 }
 
 button.random{
 	margin-top: 15px;
 }
 
+
+/*Footer*/
+footer.foot{
+	/*Display none for debug*/
+	/*display: none;*/
+	/*Change to position absolute*/
+	position:fixed; 
+	bottom: 0;
+	background-color: rgba(36,36,36,0.7);
+	height: 150px;
+	width:100%;
+	font-size: 13pt;
+}
+
+.copyright{
+	margin:65px 0 0 30px;
+}
+
+
+.footer-icon-holder{
+	width:219px;
+	position:absolute;
+	right: 102px;
+  top: 19px;
+}
+
+.above-icons-title{
+	display:block;
+	float:right;
+	padding: 5px 0px 5px 60px;
+  margin: 0 9px 7px 84px;
+  border-bottom: white 2px solid;
+}
+
+.footer-icons{
+	width:50px;
+	display: inline-block;
+  margin: 10px;
+  opacity:0.6;
+}
 
 /*Left sidebar*/
 .sidebar{
@@ -199,7 +247,7 @@ button.random{
 	background-color: rgba(14, 226, 65, 0.7);
 	/*Display none for debug*/
 	/*display: none;*/
-	left:-300px;
+	/*left:-300px;*/
 }
 
 .ingredients-side{
@@ -216,7 +264,7 @@ button.random{
 	font-size: 20pt;
 	background-color: rgba(0, 0, 0, 0.3);
 	width:100%;
-	height:450px;
+	height: 500px;
 	margin-top: 7px;
 	overflow:auto;
 }
@@ -322,15 +370,15 @@ button.random{
 	top: 40px;
 	left: 350px;
 	width:75%;
-	/*Display none for debug*/
-	display: none;
+	/*Display block for debug*/
+	/*display: none;*/
 }
 
 #ingredients-input{
 	color:#5433f7;
 	font-size: 14pt;
 	margin-top:10px;
-	width:100%;
+	width:96%;
 	background-color: rgba(255, 255, 255, 0.8);
 	box-shadow:none;
 	transition: 1s ease;
@@ -349,8 +397,9 @@ label.main-title{
 	display: none;
 	background-color: rgba(0,0,0,0.5);
 	margin-top:20px;
-	width:100%;
-	height:375px;
+	width:96%;
+	/*could be 400+ height, ask later*/
+	height:400px;
 	overflow: auto;
 }
 
@@ -405,6 +454,15 @@ li a:hover{
 @keyframes fadeoutIngredients {
   from { opacity: 1 }
   to   { opacity: 0 }
+}
+
+/*Howdothis Box*/
+.howdothis{
+	/*width:363px;*/
+	margin-top: 75px;
+	padding:20px;
+	background-color: rgba(0,0,0,0.5);
+	/*word-wrap: break-word;*/ /*Allows unbreakable words to be broken*/
 }
 
 
@@ -547,13 +605,14 @@ li a:hover{
 
 
 .right-panel{
-	width: 662px;
+  width: 700px;
   font-size: 20pt;
   text-align: center;
   transform: rotate(-90deg);
-  position: fixed;
-  top: 443px;
-  right: -331px;
+  position: absolute;
+  top: 460px;
+	right: -345px;
+  z-index: -1;
 	
 	/*Diplay none for debug*/
   /*display:none;*/
@@ -567,9 +626,8 @@ li a:hover{
 	right: -51px;
   top: 198px;
 	background-color: rgba(14, 226, 65, 0.7);
-	display: none;
+	/*display: none;*/
 }
-
 
 .instructions-mini{
 	float:right;
@@ -596,6 +654,7 @@ li a:hover{
 
 .ingredients-mini:hover{
 	cursor:pointer;
+/*	animation:rightsidewhooshywhoosh 1s;*/
 }
 
 .instructions-mini:hover{
@@ -604,4 +663,9 @@ li a:hover{
 
 .results-mini:hover{
 	cursor:pointer;
+}
+
+@keyframes rightsidewhooshywhoosh{
+	from{  }
+	to{  }
 }
