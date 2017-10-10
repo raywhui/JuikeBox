@@ -605,3 +605,46 @@ li a:hover{
 .results-mini:hover{
 	cursor:pointer;
 }
+
+.howdothis{
+	/*width:363px;*/
+	margin-top: 75px;
+	padding:20px;
+	background-color: rgba(0,0,0,0.5);
+	/*word-wrap: break-word;*/ /*Allows unbreakable words to be broken*/
+}
+
+.ingredients-switcher{
+	text-align: left;
+	cursor: pointer;
+}
+
+.exact-ing{
+	/*display:none;*/
+}
+
+.buy-the-rest{
+	display: none;
+}
+
+.is-line1{
+  position: absolute;
+  right: 30px;
+  bottom: 68px;
+  width: 24px;
+  height: 5px;
+  transform: rotate(45deg);
+  opacity: 0.7;
+  background-color: white;
+}
+
+.is-line2{
+	position: absolute;
+  right: 30px;
+  bottom: 54px;
+  width: 24px;
+  height: 5px;
+  transform: rotate(135deg);
+  opacity: 0.7;
+  background-color: white;
+}

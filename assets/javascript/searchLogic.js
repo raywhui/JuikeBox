@@ -7,7 +7,7 @@ var dupeDrinksList = [];
 var necessaryIngs = [];
 var eligibleDrinks = [];
 
-var needIngs = "No combination of your ingredients can make a legit drink. Go get more ingredients, particularly things made from alcohol. Then go back and add them on the ingredients tab.";
+var searchMode = "exact";
 
 function addIng(textVal) {
 	ingList.push(textVal);
@@ -26,10 +26,14 @@ function addIng(textVal) {
 }
 
 function goShaker() {
-	popDupes();
-	if (dupeDrinksList.length > 0) {
-		executeSearch();
-	} else {printError();}
+	if (searchMode === "exact") {
+		popDupes();
+		if (dupeDrinksList.length > 0) {
+			exactSearch();
+		} else {printError();}
+	} else if (searchMode === "inexact") {
+		inexactSearch();
+	}
 }
 
 function printError() {
@@ -49,7 +53,7 @@ function popDupes() {
 	}
 }
 
-function executeSearch() {
+function exactSearch() {
 	combinedPairs = [];
 	eligibleDrinks = [];
 	totalnumber = dupeDrinksList.length;
@@ -61,7 +65,7 @@ function executeSearch() {
 }
 
 
-function after() {
+function searchComplete() {
 	console.log('all calls completed. eligible drinks: ' + eligibleDrinks);
 	if (eligibleDrinks.length > 0) {
 		assignDrink();
@@ -137,7 +141,7 @@ function checkForIngs(targetDrink) {
 		}).done(function( html ) {
 		    counter.t++;
 		    if (counter.t == totalnumber) {
-		         after();
+		         searchComplete();
 		    }
   });		
 }
@@ -280,4 +284,24 @@ function resetSearch() {
 	}
 	$('.instructions-list').empty();
 	$('.side-list').empty();
+}
+
+
+var needIngs = "No combination of your ingredients can make a legit drink. Go get more ingredients, particularly things made from alcohol. Then go back and add them on the ingredients tab.";
+
+function randomDrink() {
+	$.ajax({
+    url: "http://www.thecocktaildb.com/api/json/v1/1/random.php",
+    method: "GET"
+  }).done(function(response){
+  	console.log(response.drinks[0].strInstructions);
+    //appends instrucion to sidebar + main box
+    $("#insList").append(response.drinks[0].strInstructions);
+    $('.instructions-list').text(response.drinks[0].strInstructions);
+    pairIM(response);
+    console.log(combinedPairs);
+    //appends measurements to sidebar
+    $("#mesList").append(combinedPairs.join(", "));
+    checkImage(response);
+  })
 }

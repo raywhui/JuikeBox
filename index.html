@@ -64,6 +64,9 @@
 				<h1 class="top-logo juikebox">JuikeB<img class='audio-control play' src='./assets/media/play.png'>x</h1>
 			</div>
 			<div class="col-lg-offset-3 col-lg-2">
+			<div class='random-centered random-title'> Too Drunk to Pick?
+						<button class="random random-centered button main-title">Surprise Me</button>
+					</div>
 <!--				<canvas class='group-logo smaller-logo' width="236px" height="149px"></canvas> -->
 			</div>
 		</div>
@@ -73,15 +76,39 @@
 	<!--Ingredients Middle Box-->
 	<div class='container-fluid ingredients-box'>
 		<div class="row">
-			<div class="col-lg-9">
-				<label class="main-title">Type in your ingredients:</label>
-				<input type="text" class="form-control" id="ingredients-input" placeholder="Minimum 2 Ingredients">
-				<div class='ingredients-choices'>
-					<ul class='choices'></ul>
+				<div class="col-lg-9">
+					<label class="main-title">Type in your ingredients:</label>
+					<input type="text" class="form-control" id="ingredients-input" placeholder="Minimum 2 Ingredients">
+					<div class='ingredients-choices'>
+						<ul class='choices'></ul>
+					</div>
+
 				</div>
+				<!--How to Do Section-->
+				<!-- Exact -->
+				<div class="col-lg-3">
+					<div class="howdothis exact-ing">
+						<h2>Exact Ingredients.</h2>
+						<p>Our super awesome sophisticated algorithm will take the ingredients you selected, put it into a blender, and churn out instructions and measurements for a random drink. Probably won't use everything you've listed, but hey, the more the merrier. If the ingredients you pick doesn't make a drink, the app will probably yell at you. *You can try mixing it together anyways. You do you.* </p>
+						<p>If you wanna use the ingredients you have and are willing to go outside and spend money, click the "I'll go buy the rest" option below. </p>
+						<h3 class="ingredients-switcher exact-click">I'll go buy the rest.<div class="is-line1"></div><div class="is-line2"></div></h3>
+					</div>
+
+					<!-- Buy-the-rest -->
+					<div class="howdothis buy-the-rest">
+						<h2>I'll go buy the rest.</h2>
+						<p>Unless you own a fully stacked bar (if you do, why are you using this app?), you probably don't have all the ingredients needed to make drinks. This option will take all take your selected ingredients and create instructions and measurements for a random alcoholic beverage, but that drink may also contain ingredients you may not have chosen. Truly cooly.</p>
+						<p>If you wanna use the ingredients you have randomly laying around your kitchen, click the "Exact Ingredients" option below. </p>
+						<h3 class="ingredients-switcher buy-click">Exact Ingredients.<div class="is-line1"></div><div class="is-line2"></div></h3>
+					</div>
+
+
+
+				</div>
+				<!-- Width: 363px Height: 444px -->
+				<!-- Top 263px Right: ???-1740px -->
 
 			</div>
-		</div>
 	</div>
 
 
@@ -502,7 +529,32 @@ function choicesList(){
 		console.log('Color is now: ' + currentColor);
 		});
 
+	$('.howdothis').on('click', '.exact-click', function(){
+	$('.exact-ing').css('display', 'none');
+	$('.buy-the-rest').css('display', 'block');
+});
 
+$('.howdothis').on('click', '.buy-click', function(){
+	$('.buy-the-rest').css('display', 'none');
+	$('.exact-ing').css('display', 'block');
+});
+
+	$('.random').on('click', function(){
+		$("#insList").empty();
+    	$('.instructions-list').empty();
+    	$("#mesList").empty();
+    	$("#drinkImg").empty();
+		$('.green').animate({ left: '-300px'},400, function(){
+			$('.blue').animate({ left: '0px'},400)
+		randomDrink();
+		});//can put callback function after linear
+		$('.ingredients-box').fadeOut(400, function(){
+			$('.instructions-box').fadeIn(400);
+			$('.instructions-mini').fadeIn(400);
+		});
+		currentColor = "blue";
+
+	});
 
 
 
