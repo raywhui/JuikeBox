@@ -602,24 +602,3 @@ function pairIM(response) {
 		}
 	}
 }
-
-function checkImage(response) {
-	if (typeof response.drinks[0].strDrinkThumb === 'string') {
-		console.log(response.drinks[0].strDrinkThumb);
-		//var img = '<img src="' + response.drinks[0].strDrinkThumb + '">';
-		//$("#image").append(img);
-	} else {console.log("no thumb");}
-}
-
-function getRecipe(finalDrink) {
-	$.ajax({
-    url: drinkURL + finalDrink,
-    method: "GET"
-  }).done(function(response){
-    console.log(response.drinks[0].strInstructions);
-    pairIM(response);
-    console.log(combinedPairs);
-    console.log("eyyeyey");
-    checkImage(response);
-  })
-}
