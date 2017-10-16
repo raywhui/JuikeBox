@@ -9,8 +9,8 @@ body{
 	/*background-color: black; */
 	background-color: #D3D3D3;
   font-family: 'Poppins', sans-serif;
-	color:white;
-}
+	color:white
+};
 
 
 /*Landing Page*/
@@ -283,6 +283,7 @@ footer.foot{
   top:0;
   left:0;
   display:none;
+  transition: 0.25s;
 }
 
 .overlay-container .closebtn{
@@ -317,6 +318,8 @@ a.closebtn{
 
 .about-overlay{
 	display:none;
+	opacity: 0;
+	transition: 0.5s;
 }
 
 
@@ -354,6 +357,8 @@ a.closebtn{
 
 .meet-overlay{
 	display: none;
+	opacity: 0;
+	transition: 0.5s;
 }
 
 .meet-image{
@@ -599,18 +604,25 @@ li a:hover{
   to   { opacity: 0 }
 }
 
+
 /*Howdothis Box*/
 .howdothis{
-	/*width:363px;*/
 	margin-top: 75px;
 	padding:20px;
 	background-color: rgba(0,0,0,0.5);
-	/*word-wrap: break-word;*/ /*Allows unbreakable words to be broken*/
+	transition: 0.5s;
+	/*word-wrap: break-word; Allows unbreakable words to be broken*/
 }
 
 .ingredients-switcher{
 	text-align: left;
 	cursor: pointer;
+	opacity: 0.7;
+	transition: 0.5s;
+}
+
+.ingredients-switcher:hover{
+	opacity: 1;
 }
 
 .exact-ing{
@@ -669,11 +681,16 @@ h2{
 	width: 100%;
   height: 400px;
 	background-color: rgba(0,0,0,0.5);;
-	padding:0 0 0 45px;
+	padding:30px 0 0 45px;
 	margin-top: 10px;
 	font-size: 20pt;
 	word-wrap: break-word;
 	overflow:auto;
+}
+
+.next-step{
+	font-size: 14pt;
+	margin-top:32px;
 }
 
 .instructions-sidebox{
@@ -687,7 +704,7 @@ h2{
 
 .receipt{
 	width:100px;
-	margin-top: 20px;
+	margin-top: 10px;
   float: right;
   z-index: 1;
 }
@@ -729,13 +746,10 @@ h2{
 	margin-top:10px;
 }
 
-.measurements-sidebox{
-	height:225px;
-}
-
 .measurements-side-list{
+	list-style-type:disc;
 	color:navajowhite;
-	margin-left:16px;
+	margin: 10px 0 0 41px;
 }
 
 

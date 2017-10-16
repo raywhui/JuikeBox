@@ -19,15 +19,15 @@
 </head>
 
 <body>
-<!-- 	
-	<canvas class='group-logo' width="600px" height="600px"></canvas>
+ 	
+	<!-- <canvas class='group-logo' width="600px" height="600px"></canvas> -->
 	
 
-	<video class="background" muted loop>
+<!-- 	<video class="background" autoplay muted loop>
 		<source src="./assets/media/Collins_Loop.mp4" type="video/mp4" autoplay muted loop>
-		</video>
+	</video> -->
 
-		<audio id="landing-music" loop>
+	<!-- 	<audio id="landing-music" loop>
 			<source src="./assets/media/juicebox_320kbps_130bpm.mp3" type="audio/mp3">
 			</audio>
 
@@ -53,8 +53,8 @@
 				Background audio by: 
 				<a class="intellaflow" href="https://soundcloud.com/intellaflow" target="_blank">intellaFLOW</a>
 			</div> 
-
-		-->
+ -->
+		
 
 		<!--Top bar-->
 		<header class="container-fluid head">
@@ -225,12 +225,10 @@
 
 					<label class="main-title">Follow these instructions:</label> <!--10 margin 1 border-->
 					<div class="instructions-list">
-
-						<div></div>
 					</div>
 
 					<!--Replace later-->
-					<button class="random button main-title">Next Step.</button>
+					<button class="next-step button main-title">Next Step.</button>
 					<div class='receipt'>
 
 						<!--DISPLAY NONE, THEN FADE IN ONCE LAST STEP APPEARS-->
@@ -241,23 +239,7 @@
 				<!--How to Do Section-->
 				<div class="col-lg-3">
 					<div class="howdothis">
-						<p>	Hey, I was doing just fine before I met you.
-							I drink too much and that's an issue but I'm okay.
-							Hey, you tell your friends it was nice to meet them,
-							But I hope I never see them again.
-							I know it breaks your heart.
-							Moved to the city in a broke down car
-							And four years, no calls.
-							Now you're looking pretty in a hotel bar
-							And I can't stop.
-							No, I can't stop.
-							So baby pull me closer in the backseat of your Rover
-							That I know you can't afford.
-							Bite that tattoo on your shoulder.
-							Pull the sheets right off the corner
-							Of the mattress that you stole
-							From your roommate back in Boulder.
-						We ain't ever getting older. </p>
+						<p> This is the part where you actually make something to drink. Just follow the instructions and hit next each time you complete whatever it says on the screen. Once you've completed all the steps, a receipt will appear and click it to go on to the next page. This shouldn't be too hard and you'll probably be fine assuming you're not already drunk. (Some of the measurements may not have a specific amount so just eyeball it.)</p>
 					</div>
 				</div>
 			</div>
@@ -267,29 +249,9 @@
 		<!--Instructions Sidebar-->
 		<aside class="sidebar blue" id="container">
 			<div class="ingredients-side">
-				<div class="title">Instructions:</div>
-				<div class="sidebox instructions-sidebox">
-					<ul class='instructions-side-list' id="insList">
-					<!--<li>This is text instructions number 1.</li>
-					<li>test 2</li>
-					<li>test 3</li>
-					<li>test 4</li>
-					<li>test 5</li>
-					<li>test 6</li>
-					<li>test 7</li>
-					<li>test 7</li> !-->
-				</ul>
-			</div>
 			<div class ="title measurements">Measurements:</div>
-			<div class="sidebox measurements-sidebox">
-				<ul class='measurements-side-list' id="mesList">
-					<!--<li>test 1</li>
-					<li>test 2</li>
-					<li>test 3</li>
-					<li>test 4</li>
-					<li>test 5</li>
-					<li>test 6</li>
-					<li>test 7</li>!-->
+			<div class="sidebox">
+				<ul class='measurements-side-list'>
 				</ul>
 			</div>
 		</div>
@@ -584,7 +546,8 @@ $('.ingredients-confirm').on('click','.shaker',function(){
 });//ingredients-confirm
 
 	//Be able to go back to ingredients, change, hit confirm, then generates new instructions
-	$('.instructions-list').text(dummyInstructionsArray[0]);//delete when finished
+	
+	
 	$('.receipt').on('click',function(){
 		$('.blue').animate({ left: '-300px'},400, function(){
 			$('.purple').animate({ left: '0px'},400)
@@ -597,7 +560,13 @@ $('.ingredients-confirm').on('click','.shaker',function(){
 		});
 
 		currentColor = "purple";
-	})
+	});
+
+
+
+
+
+
 
 	//Right side panel functionality
 	$('.ingredients-mini').on('click',function(){
@@ -707,31 +676,43 @@ $('.backroom-icon').hover(function(){
 		$('.backroom-title').css('display','none');
 });
 
-
+//setTimeout after overlay comes out for smoother transition.
 $('.about-icon').on('click', function(){
-	$('.overlay').css('display','block');
+	$('.overlay').css({'width':'100%', 'display':'block'});
 	$('.about-overlay').css('display','block');
+	setTimeout(function(){
+		$('.about-overlay').css('opacity',1);
+	},250)
 });
 
+
+
 $('.meet-icon').on('click', function(){
-	$('.overlay').css('display','block');
+	// $('.overlay').css('display','block');
+	$('.overlay').css({'width':'100%', 'display':'block'});
 	$('.meet-overlay').css('display','block');
+	setTimeout(function(){
+		$('.meet-overlay').css('opacity',1);
+	},250)
 });
 
 $('.backroom-icon').on('click', function(){
-	$('.overlay').css('display','block');
+	// $('.overlay').css('display','block');
+	$('.overlay').css({'width':'100%', 'display':'block'});
 	$('.backroom-overlay').css('display','block');
+	setTimeout(function(){
+		$('.backroom-overlay').css('opacity',1);
+	},250)
 });
 
 
 $('.overlay-container').on('click','.closebtn', function(){
 
-	$('.about-overlay').css('display','none');
-	$('.meet-overlay').css('display','none');
-	$('.backroom-overlay').css('display','none');
-	$('.overlay').css('display','none');
+	$('.overlay').css('width','0%');
+	$('.about-overlay').css({'display':'none', 'opacity':0});
+	$('.meet-overlay').css({'display':'none', 'opacity':0});
+	$('.backroom-overlay').css({'display':'none', 'opacity':0});
 });
-
 
 
 </script>
