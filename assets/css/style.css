@@ -13,6 +13,10 @@ body{
 };
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2d2abc11dc0d627fb30a90c38d767402aea9ed6d
 /*Landing Page*/
 video.background{
 	display:none;
@@ -283,7 +287,10 @@ footer.foot{
   top:0;
   left:0;
   display:none;
+<<<<<<< HEAD
   transition: 0.25s;
+=======
+>>>>>>> 2d2abc11dc0d627fb30a90c38d767402aea9ed6d
 }
 
 .overlay-container .closebtn{
@@ -318,8 +325,11 @@ a.closebtn{
 
 .about-overlay{
 	display:none;
+<<<<<<< HEAD
 	opacity: 0;
 	transition: 0.5s;
+=======
+>>>>>>> 2d2abc11dc0d627fb30a90c38d767402aea9ed6d
 }
 
 
@@ -357,8 +367,11 @@ a.closebtn{
 
 .meet-overlay{
 	display: none;
+<<<<<<< HEAD
 	opacity: 0;
 	transition: 0.5s;
+=======
+>>>>>>> 2d2abc11dc0d627fb30a90c38d767402aea9ed6d
 }
 
 .meet-image{
@@ -604,6 +617,53 @@ li a:hover{
   to   { opacity: 0 }
 }
 
+/*Howdothis Box*/
+.howdothis{
+	/*width:363px;*/
+	margin-top: 75px;
+	padding:20px;
+	background-color: rgba(0,0,0,0.5);
+	/*word-wrap: break-word;*/ /*Allows unbreakable words to be broken*/
+}
+
+.ingredients-switcher{
+	text-align: left;
+	cursor: pointer;
+}
+
+.exact-ing{
+	/*display:none;*/
+}
+
+.buy-the-rest{
+	display: none;
+}
+
+h2{
+	margin-top: 0px;
+}
+
+.is-line1{
+  position: absolute;
+  right: 30px;
+  bottom: 68px;
+  width: 24px;
+  height: 5px;
+  transform: rotate(45deg);
+  opacity: 0.7;
+  background-color: white;
+}
+
+.is-line2{
+	position: absolute;
+  right: 30px;
+  bottom: 54px;
+  width: 24px;
+  height: 5px;
+  transform: rotate(135deg);
+  opacity: 0.7;
+  background-color: white;
+}
 
 /*Howdothis Box*/
 .howdothis{
