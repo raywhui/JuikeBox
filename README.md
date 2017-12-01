@@ -50,5 +50,5 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* Special Thanks to Collins [intellaFLOW](https://soundcloud.com/intellaflow) and his friend for the introductory music and background videos. Follow him on SoundCloud! 
+* Special Thanks to Collins - [intellaFLOW](https://soundcloud.com/intellaflow) - and his friend for the introductory music and background videos. Follow him on SoundCloud! 
 
