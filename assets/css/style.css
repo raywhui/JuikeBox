@@ -6,22 +6,18 @@ html{
 
 body{
 	/*Color grey for debug*/
-	/*background-color: black; */
-	background-color: #D3D3D3;
+	background-color: black; 
+	/*background-color: #D3D3D3;*/
   font-family: 'Poppins', sans-serif;
-	color:white
-};
+	color:white;
+}
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 2d2abc11dc0d627fb30a90c38d767402aea9ed6d
 /*Landing Page*/
 video.background{
 	display:none;
 	position: fixed;
-	opacity:0.15;
+	opacity:0.65;
 	min-height: 100%;
   min-width: 1920px;
 	width: 100%;
@@ -165,8 +161,8 @@ h3 span:nth-child(2){
 
 /*Header*/
 header.head{
-	/*Display none for debug*/
-	/*display: none;*/
+	/*Display for debug*/
+	display: none;
 	background-color: rgba(36,36,36,0.7);
 	height: 150px;
 	width: 100;%
@@ -279,18 +275,15 @@ footer.foot{
 
 /*Overlays*/
 .overlay{
-	width: 100%;
+	width: 0%;
 	height:100%; 
   background-color: rgba(0,0,0, 0.5);
   z-index: 2;
   position: fixed;
   top:0;
   left:0;
-  display:none;
-<<<<<<< HEAD
+  /*display:none;*/
   transition: 0.25s;
-=======
->>>>>>> 2d2abc11dc0d627fb30a90c38d767402aea9ed6d
 }
 
 .overlay-container .closebtn{
@@ -315,6 +308,7 @@ footer.foot{
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  display: none;
 }
 
 a.closebtn{
@@ -325,11 +319,8 @@ a.closebtn{
 
 .about-overlay{
 	display:none;
-<<<<<<< HEAD
 	opacity: 0;
 	transition: 0.5s;
-=======
->>>>>>> 2d2abc11dc0d627fb30a90c38d767402aea9ed6d
 }
 
 
@@ -367,11 +358,8 @@ a.closebtn{
 
 .meet-overlay{
 	display: none;
-<<<<<<< HEAD
 	opacity: 0;
 	transition: 0.5s;
-=======
->>>>>>> 2d2abc11dc0d627fb30a90c38d767402aea9ed6d
 }
 
 .meet-image{
@@ -408,7 +396,7 @@ a.closebtn{
 	background-color: rgba(14, 226, 65, 0.7);
 	/*Display none for debug*/
 	/*display: none;*/
-	/*left:-300px;*/
+	left:-300px;
 }
 
 .ingredients-side{
@@ -532,7 +520,7 @@ a.closebtn{
 	left: 350px;
 	width:75%;
 	/*Display block for debug*/
-	/*display: none;*/
+	display: none;
 }
 
 #ingredients-input{
@@ -881,7 +869,7 @@ h2{
 	right: -51px;
   top: 198px;
 	background-color: rgba(14, 226, 65, 0.7);
-	/*display: none;*/
+	display: none;
 }
 
 .instructions-mini{
