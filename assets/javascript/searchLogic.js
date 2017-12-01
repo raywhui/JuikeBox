@@ -1,5 +1,5 @@
-var drinkURL = "http://www.thecocktaildb.com/api/json/v1/1/search.php?s=";
-var ingURL = "http://www.thecocktaildb.com/api/json/v1/2345/filter.php?i=";
+var drinkURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=";
+var ingURL = "https://www.thecocktaildb.com/api/json/v1/2345/filter.php?i=";
 
 var ingList = [];
 var totalDrinksList = [];
