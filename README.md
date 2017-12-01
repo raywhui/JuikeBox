@@ -2,6 +2,8 @@
 
 Ever wanted to enjoy a nice drink, but didn't know what to make with the random ingredients you have lying around? Ever wanted to go out to the club, but don't want to leave the comfort your own home? Look no further than Juikebox, the app designed to create drinks with the ingredients you have and to suggest music based on those ingredients. Create and mix your own cocktails, generate new drink recipes in seconds, and learn new drinks you never knew you could make with the things you have lying around your kitchen!
 
+Try it Out: https://raywhui.github.io/JuikeBox/
+
 ## Getting Started	
 
 You'll need a refined taste for alcohol. Or just any alcohol for that matter. You'll also need real life ingredients if you plan on making any actual drinks.
