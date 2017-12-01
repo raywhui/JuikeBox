@@ -35,7 +35,8 @@ If you wish to create a new drink, simply click on the green tab on the right ha
 
 * [TheCocktailDB](https://www.thecocktaildb.com/index.php) - Alcohol ingredients and drinks database
 * [SoundCloud](https://soundcloud.com/stream) - Music Generator
-* [jCanvas](https://projects.calebevans.me/jcanvas/) - Intro Canvas Animation
+* [jCanvas](https://projects.calebevans.me/jcanvas/) - Intro jQuery Canvas Animation
+* [BootStrap](https://getbootstrap.com/) - HTML, CSS Framework
 
 
 ## Current Staff
