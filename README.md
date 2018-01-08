@@ -26,9 +26,15 @@ When you are prompted to the ingredients page, you can input the ingredients tha
 
 There are currently two options to choose from when deciding your ingredients: "Exact Ingredients" and "I'll go buy the rest". "Exact Ingredients" will generate drinks solely based on the ingredients you have selected. If a drink does not currently exist with the list you have given, you will be prompted to reinput a new list of ingredients. "I'll go buy the rest" is an option for those who are willing to run outside during a party to buy the last few ingredients they didn't know they needed to make a great drink. This option will generate drinks with ingredients you have no explicitly listed, just close enough. It pretty much does the same thing as the first option, but a little more flexible when it comes to the ingredients.
 
+![Title](https://raw.githubusercontent.com/raywhui/JuikeBox/master/screen2.png)
+
 After you have clicked the shaker, you will be prompted to the next screen which will give you instructions on how to create the drink. Just follow the step by step instructions and you should be just fine, assuming you are not already drunk. Sometimes, there will also be a list of other drinks that contain the same ingredients if you wanna try those instead. Once that's done, click on the receipt and you will be lead to the receipt page.
 
+![Title](https://raw.githubusercontent.com/raywhui/JuikeBox/master/screen3.png)
+
 On the receipt page, you will be given a name for the drink you made, a price (inflated because bar drinks are expensive), and a picture of what it should look like! There is also a song suggestion on the side of the screen so you can enjoy your drink and listen to new music at the same time!
+
+![Title](https://raw.githubusercontent.com/raywhui/JuikeBox/master/screen4.png)
 
 If you wish to create a new drink, simply click on the green tab on the right hand side and it will take you back to the ingredients page, where you can make a new drink all over again. Enjoy!
 
